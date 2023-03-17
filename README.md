@@ -182,7 +182,7 @@ This should include logs for creating the buildroots, applying patches, doing th
 *******************************************************************************
 'build.log' is a log file for our build.
 
-It was produced with command: docker build --no-cache --progress=plain --tag=shim-review-itrenew . &>  build.log
+It was produced with command: docker build --no-cache --tag=shim . &>  build.log
 
 *******************************************************************************
 ### What changes were made since your SHIM was last signed?
@@ -192,7 +192,7 @@ None, that's our first submission.
 *******************************************************************************
 ### What is the SHA256 hash of your final SHIM binary?
 *******************************************************************************
-[your text here]
+cbd7b5b8a73483268102955c28fd467f830cbd0f0b1de92904c90371392daa97
 
 *******************************************************************************
 ### How do you manage and protect the keys used in your SHIM?
