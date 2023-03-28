@@ -1,6 +1,6 @@
 # v1f
 FROM debian:bullseye
-ARG CERT_FILE="10ZiG_SecureBoot2.der"
+ARG CERT_FILE="10ZiG_SecureBoot2023.der"
 
 # dependencies
 RUN apt-get -y -qq update

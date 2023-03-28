@@ -1,16 +1,23 @@
-Sending build context to Docker daemon  75.87MB
+Sending build context to Docker daemon  50.59MB
 Step 1/22 : FROM debian:bullseye
- ---> 72b624312240
-Step 2/22 : ARG CERT_FILE="10ZiG_SecureBoot2.der"
- ---> Running in 1161da8c6621
-Removing intermediate container 1161da8c6621
- ---> 043235aadca1
+bullseye: Pulling from library/debian
+3e440a704568: Pulling fs layer
+3e440a704568: Verifying Checksum
+3e440a704568: Download complete
+3e440a704568: Pull complete
+Digest: sha256:7b991788987ad860810df60927e1adbaf8e156520177bd4db82409f81dd3b721
+Status: Downloaded newer image for debian:bullseye
+ ---> f5b06fd90040
+Step 2/22 : ARG CERT_FILE="10ZiG_SecureBoot2023.der"
+ ---> Running in 27b0417f4d24
+Removing intermediate container 27b0417f4d24
+ ---> 75d691e1725a
 Step 3/22 : RUN apt-get -y -qq update
- ---> Running in 7739243a0591
-Removing intermediate container 7739243a0591
- ---> cb54e7f04650
+ ---> Running in 8ee066e09ca0
+Removing intermediate container 8ee066e09ca0
+ ---> 8a1173547e55
 Step 4/22 : RUN apt-get -y -qq install gcc make bzip2 efitools curl wget git
- ---> Running in 3f480fa160ab
+ ---> Running in 36913a63fc75
 [91mdebconf: delaying package configuration, since apt-utils is not installed
 [0mSelecting previously unselected package perl-modules-5.32.
 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6661 files and directories currently installed.)
@@ -403,117 +410,117 @@ Updating certificates in /etc/ssl/certs...
 0 added, 0 removed; done.
 Running hooks in /etc/ca-certificates/update.d...
 done.
-Removing intermediate container 3f480fa160ab
- ---> bfccf0062688
+Removing intermediate container 36913a63fc75
+ ---> 589696a4dc0b
 Step 5/22 : WORKDIR /build
- ---> Running in 139c868d556c
-Removing intermediate container 139c868d556c
- ---> a76fb5655431
+ ---> Running in f4b23cc16d8d
+Removing intermediate container f4b23cc16d8d
+ ---> a5babf5b4987
 Step 6/22 : RUN mkdir -p /build/patches
- ---> Running in aff2441d276c
-Removing intermediate container aff2441d276c
- ---> aef6a7f5092a
+ ---> Running in f2ce9ecb0e5e
+Removing intermediate container f2ce9ecb0e5e
+ ---> d9b72e844d96
 Step 7/22 : COPY patches /build/patches
- ---> c0aa94b414e0
+ ---> 0aadca1d4197
 Step 8/22 : RUN wget https://github.com/rhboot/shim/releases/download/15.7/shim-15.7.tar.bz2
- ---> Running in e654b144f542
-[91m--2023-03-16 15:24:16--  https://github.com/rhboot/shim/releases/download/15.7/shim-15.7.tar.bz2
+ ---> Running in 6361bb2f3026
+[91m--2023-03-28 07:01:40--  https://github.com/rhboot/shim/releases/download/15.7/shim-15.7.tar.bz2
 [0m[91mResolving github.com (github.com)... [0m[91m140.82.121.3
 Connecting to github.com (github.com)|140.82.121.3|:443... [0m[91mconnected.
 [0m[91mHTTP request sent, awaiting response... [0m[91m302 Found
-Location: https://objects.githubusercontent.com/github-production-release-asset-2e65be/3996476/c417b0cc-a277-43ea-b275-fe5fe39bf382?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230316%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230316T152416Z&X-Amz-Expires=300&X-Amz-Signature=8ae2ba2b2590efa7662ee95d9c8a33cc157740f33374c98f86c5cc42e8035ab4&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=3996476&response-content-disposition=attachment%3B%20filename%3Dshim-15.7.tar.bz2&response-content-type=application%2Foctet-stream [following]
-[0m[91m--2023-03-16 15:24:16--  https://objects.githubusercontent.com/github-production-release-asset-2e65be/3996476/c417b0cc-a277-43ea-b275-fe5fe39bf382?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230316%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230316T152416Z&X-Amz-Expires=300&X-Amz-Signature=8ae2ba2b2590efa7662ee95d9c8a33cc157740f33374c98f86c5cc42e8035ab4&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=3996476&response-content-disposition=attachment%3B%20filename%3Dshim-15.7.tar.bz2&response-content-type=application%2Foctet-stream
-Resolving objects.githubusercontent.com (objects.githubusercontent.com)... [0m[91m185.199.111.133, 185.199.110.133[0m[91m, 185.199.109.133, ...
-Connecting to objects.githubusercontent.com (objects.githubusercontent.com)|185.199.111.133|:443... [0m[91mconnected.
+Location: https://objects.githubusercontent.com/github-production-release-asset-2e65be/3996476/c417b0cc-a277-43ea-b275-fe5fe39bf382?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230328%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230328T070140Z&X-Amz-Expires=300&X-Amz-Signature=3ba2c28ae26712044c134c69ffa2f45965055806867d780be90fcf05bdc4d58f&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=3996476&response-content-disposition=attachment%3B%20filename%3Dshim-15.7.tar.bz2&response-content-type=application%2Foctet-stream [following]
+--2023-03-28 07:01:40--  https://objects.githubusercontent.com/github-production-release-asset-2e65be/3996476/c417b0cc-a277-43ea-b275-fe5fe39bf382?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230328%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230328T070140Z&X-Amz-Expires=300&X-Amz-Signature=3ba2c28ae26712044c134c69ffa2f45965055806867d780be90fcf05bdc4d58f&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=3996476&response-content-disposition=attachment%3B%20filename%3Dshim-15.7.tar.bz2&response-content-type=application%2Foctet-stream
+Resolving objects.githubusercontent.com (objects.githubusercontent.com)... [0m[91m185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to objects.githubusercontent.com (objects.githubusercontent.com)|185.199.108.133|:443... [0m[91mconnected.
 [0m[91mHTTP request sent, awaiting response... [0m[91m200 OK
-[0m[91mLength: [0m[91m1334863 (1.3M)[0m[91m [application/octet-stream]
+[0m[91mLength: 1334863 (1.3M) [application/octet-stream]
 [0m[91mSaving to: 'shim-15.7.tar.bz2'
 [0m[91m
-     0K .[0m[91m.[0m[91m.[0m[91m..[0m[91m.[0m[91m...[0m[91m. ..[0m[91m.[0m[91m..[0m[91m...[0m[91m..[0m[91m .[0m[91m.[0m[91m.[0m[91m.....[0m[91m.. .[0m[91m...[0m[91m..[0m[91m...[0m[91m. .......[0m[91m...  3%[0m[91m 1.46M 1s
-    50K[0m[91m ..[0m[91m.[0m[91m....[0m[91m... [0m[91m...[0m[91m......[0m[91m. ....[0m[91m..[0m[91m.[0m[91m.[0m[91m.[0m[91m. .[0m[91m......... .[0m[91m..[0m[91m..[0m[91m...[0m[91m..  7%[0m[91m 1.96M[0m[91m 1s
-   100K[0m[91m [0m[91m.[0m[91m..[0m[91m..[0m[91m.[0m[91m..[0m[91m..[0m[91m [0m[91m.[0m[91m...[0m[91m...[0m[91m... .......[0m[91m...[0m[91m ...[0m[91m..[0m[91m.[0m[91m.... ..[0m[91m.[0m[91m....[0m[91m...[0m[91m 11% 6.90M[0m[91m 1s
-   150K ....[0m[91m.[0m[91m.[0m[91m..[0m[91m.[0m[91m.[0m[91m .......... .....[0m[91m.[0m[91m.... .......... .[0m[91m......... 15% 7.95M 0s
-   200K .......[0m[91m... .......... ...[0m[91m....... .........[0m[91m. .......... 19% 2.82M 0s
-   250K .....[0m[91m..... .......... .[0m[91m......... .......[0m[91m... .......... 23% 13.0M 0s
-   300K ...[0m[91m....... .........[0m[91m. .......... .....[0m[91m..... .......... 26% 17.0M 0s
-   350K .[0m[91m......... .......[0m[91m... .......... ...[0m[91m....... ..[0m[91m........ 30% 3.12M 0s
-   400K ........[0m[91m.. .......... ....[0m[91m...... ..........[0m[91m .......... 34% 16.0M 0s
-   450K ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. .......... 38% 14.6M 0s
-   500K ....[0m[91m...... ..........[0m[91m .......... ......[0m[91m.... .......... 42% 15.4M 0s
-   550K ..[0m[91m........ .......... .......... ....[0m[91m...... .......... 46% 14.6M 0s
-   600K .......... .......... .......... ..[0m[91m........ ........[0m[91m.. 49% 21.4M 0s
-   650K .......... .......... ..........[0m[91m .......... ......[0m[91m.... 53% 31.6M 0s
-   700K .......... ..[0m[91m........ ........[0m[91m.. ......[0m[91m.... ....[0m[91m...... 57% 3.59M 0s
-   750K .......... ........[0m[91m.. .......... .......... ..[0m[91m........ 61%  160M 0s
-   800K .......... .......... .......... ..........[0m[91m .......... 65%  108M 0s
-   850K .......... .......... ..[0m[91m........ .......... .......... 69% 20.1M 0s
-   900K .......... ..........[0m[91m .......... .......... .......... 72%  163M 0s
-   950K ..[0m[91m........ ........[0m[91m.. .......... .......... ..[0m[91m........ 76% 11.8M 0s
-  1000K .......... ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. 80% 82.6M 0s
-  1050K .......... .......... .......... .......... .......... 84%  196M 0s
-  1100K .......... ..[0m[91m........ ........[0m[91m.. ......[0m[91m.... .......... 88% 13.2M 0s
-  1150K .......... .......... .......... .......... ..[0m[91m........ 92% 32.0M 0s
-  1200K .......... .......... ....[0m[91m.[0m[91m....[0m[91m. [0m[91m.[0m[91m.[0m[91m.[0m[91m...[0m[91m.[0m[91m...[0m[91m ..[0m[91m...[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m. 95%[0m[91m 20.7M[0m[91m 0s
-  1250K [0m[91m....[0m[91m.[0m[91m.[0m[91m...[0m[91m. [0m[91m.[0m[91m.[0m[91m..[0m[91m.[0m[91m..[0m[91m... [0m[91m..[0m[91m.[0m[91m..[0m[91m.[0m[91m.[0m[91m...[0m[91m .[0m[91m.[0m[91m.[0m[91m...[0m[91m..[0m[91m.[0m[91m. .......... 99% 10.3M 0s
-  1300K ...                                                   100% 6.66T=0.2s
+     0K ........[0m[91m..[0m[91m ...[0m[91m.[0m[91m...[0m[91m...[0m[91m ...[0m[91m..[0m[91m...[0m[91m..[0m[91m ...[0m[91m...[0m[91m...[0m[91m. .[0m[91m.[0m[91m..[0m[91m..[0m[91m..[0m[91m.[0m[91m.  3%[0m[91m 1.43M 1s
+    50K[0m[91m [0m[91m..[0m[91m..[0m[91m.[0m[91m..[0m[91m.[0m[91m.[0m[91m.[0m[91m .[0m[91m.[0m[91m..[0m[91m.[0m[91m.....[0m[91m ...[0m[91m.[0m[91m..[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m [0m[91m.[0m[91m.[0m[91m.[0m[91m...[0m[91m.... .[0m[91m.[0m[91m.[0m[91m.[0m[91m......  7%[0m[91m 1.79M[0m[91m 1s[0m[91m
+   100K[0m[91m [0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m...[0m[91m ....[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m.[0m[91m ..[0m[91m...[0m[91m.[0m[91m.[0m[91m..[0m[91m. ..[0m[91m..[0m[91m.[0m[91m..[0m[91m..[0m[91m.[0m[91m [0m[91m.[0m[91m.[0m[91m.[0m[91m..[0m[91m..... 11% 6.51M 1s[0m[91m
+   150K .[0m[91m........[0m[91m.[0m[91m .......[0m[91m... ...[0m[91m..[0m[91m..... ...[0m[91m.......[0m[91m ....[0m[91m..[0m[91m..[0m[91m.[0m[91m. 15% 6.81M[0m[91m 0s
+   200K[0m[91m ...[0m[91m.[0m[91m.[0m[91m.[0m[91m....[0m[91m [0m[91m.[0m[91m.[0m[91m..[0m[91m....[0m[91m..[0m[91m [0m[91m.[0m[91m.[0m[91m.....[0m[91m..[0m[91m.[0m[91m [0m[91m...[0m[91m.....[0m[91m.. .......... 19% 2.58M 0s
+   250K ....[0m[91m...... ..........[0m[91m .......... ......[0m[91m.... .......... 23% 6.43M 0s
+   300K ..[0m[91m........ ........[0m[91m.. .......... ....[0m[91m...... .......... 26% 6.25M 0s[0m[91m
+   350K .......... ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. 30% 5.47M 0s
+   400K ......[0m[91m.... ....[0m[91m...... ..........[0m[91m .......... ......[0m[91m.... 34% 9.41M 0s
+   450K .......... ..[0m[91m........ ........[0m[91m.. .......... ....[0m[91m...... 38% 8.25M 0s
+   500K ..........[0m[91m .......... ......[0m[91m.... .......... .......... 42% 11.1M 0s
+   550K .[0m[91m.......[0m[91m.. .......... ....[0m[91m...... .......... .........[0m[91m. 46% 9.64M 0s
+   600K ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. .......... 49% 9.53M 0s
+   650K ....[0m[91m...... ..........[0m[91m .......... ......[0m[91m.... .......... 53% 10.0M 0s
+   700K ..[0m[91m........ ........[0m[91m.. .......[0m[91m... ....[0m[91m...... .......... 57% 11.8M 0s[0m[91m
+   750K .......... .......... ........[0m[91m.. .......... ....[0m[91m...... 61% 1.16M 0s
+   800K ..........[0m[91m .......... ......[0m[91m.... .....[0m[91m..... ..[0m[91m........ 65% 13.8M 0s
+   850K .[0m[91m.......[0m[91m.. .......[0m[91m.[0m[91m.[0m[91m. ....[0m[91m...... ..........[0m[91m .........[0m[91m. 69% 12.4M[0m[91m 0s
+   900K ......[0m[91m.... .......... ..[0m[91m........ ..[0m[91m......[0m[91m.. .......... 72% 12.3M 0s
+   950K ....[0m[91m...... ..........[0m[91m .......... ......[0m[91m.... .......... 76% 15.0M 0s
+  1000K ..[0m[91m........ ........[0m[91m.. ..[0m[91m......[0m[91m.. .......... ....[0m[91m...... 80% 10.2M 0s
+  1050K ..[0m[91m........[0m[91m .......... ......[0m[91m.... .......... ..[0m[91m........ 84% 18.2M 0s
+  1100K ........[0m[91m.. .......... ....[0m[91m...... ..........[0m[91m .......... 88% 10.3M 0s
+  1150K ..[0m[91m....[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. ......[0m[91m.... 92% 16.7M 0s
+  1200K ....[0m[91m...... .......... [0m[91m........[0m[91m.. ......[0m[91m.... .......... 95% 18.5M 0s
+  1250K ..[0m[91m........ .......... ......[0m[91m..[0m[91m.. .......... ....[0m[91m...... 99% 15.6M 0s
+  1300K ...                                                   100%[0m[91m 43.8M=0.2s
 
-2023-03-16 15:24:17 (7.84 MB/s) - 'shim-15.7.tar.bz2' saved [1334863/1334863]
+[0m[91m2023-03-28 07:01:41 (5.49 MB/s) - 'shim-15.7.tar.bz2' saved [1334863/1334863]
 
-[0mRemoving intermediate container e654b144f542
- ---> 75a4bebde301
+[0mRemoving intermediate container 6361bb2f3026
+ ---> 2519682a8971
 Step 9/22 : RUN tar jxf shim-15.7.tar.bz2
- ---> Running in bf4f05c907c0
-Removing intermediate container bf4f05c907c0
- ---> 5f352d024921
+ ---> Running in ff969470c8d3
+Removing intermediate container ff969470c8d3
+ ---> 38928fcb504e
 Step 10/22 : WORKDIR /build/shim-15.7
- ---> Running in 1f4e9e8693b4
-Removing intermediate container 1f4e9e8693b4
- ---> 7961820931ea
+ ---> Running in fe942083c93b
+Removing intermediate container fe942083c93b
+ ---> e1ad6c1466e5
 Step 11/22 : RUN git apply /build/patches/*.patch
- ---> Running in 0ecce5261474
-Removing intermediate container 0ecce5261474
- ---> 283e07a17884
+ ---> Running in cb4d2c4e11d9
+Removing intermediate container cb4d2c4e11d9
+ ---> 53948f328f00
 Step 12/22 : ADD ${CERT_FILE} .
- ---> e10957a09df8
+ ---> 4d990fdb65d5
 Step 13/22 : ADD shimx64_10ZiG.sbat .
- ---> 606e45fa9d1b
+ ---> 6799efa12a53
 Step 14/22 : RUN cat shimx64_10ZiG.sbat >> data/sbat.csv && cat data/sbat.csv
- ---> Running in 1731a645f95a
+ ---> Running in 61bcd7d25c20
 sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
 shim,3,UEFI shim,shim,1,https://github.com/rhboot/shim
 shim.10zig,1,10ZiG Technology,shim,15.7,mail:secureboot@10zig.com
-Removing intermediate container 1731a645f95a
- ---> a04f35fad9bd
+Removing intermediate container 61bcd7d25c20
+ ---> 1be7ba91d555
 Step 15/22 : RUN mkdir build-x64
- ---> Running in d2b60374714c
-Removing intermediate container d2b60374714c
- ---> 5d5c712afff4
+ ---> Running in 96d1316882cc
+Removing intermediate container 96d1316882cc
+ ---> b7915a757f3d
 Step 16/22 : RUN make -C build-x64 ARCH=x86_64 VENDOR_CERT_FILE=../${CERT_FILE} TOPDIR=.. -f ../Makefile
- ---> Running in 6a45e378915f
+ ---> Running in 8988d96653b4
 make: Entering directory '/build/shim-15.7/build-x64'
 sed	-e "s,@@VERSION@@,15.7," \
 	-e "s,@@UNAME@@,Linux x86_64 unknown unknown GNU/Linux," \
 	-e "s,@@COMMIT@@,master," \
 	< /build/shim-15.7/version.c.in > version.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o shim.o /build/shim-15.7/shim.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o globals.o /build/shim-15.7/globals.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o mok.o /build/shim-15.7/mok.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o netboot.o /build/shim-15.7/netboot.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\" -c -o cert.o /build/shim-15.7/cert.S
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o replacements.o /build/shim-15.7/replacements.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o tpm.o /build/shim-15.7/tpm.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o version.o version.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o errlog.o /build/shim-15.7/errlog.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o sbat.o /build/shim-15.7/sbat.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\" -x c -c -o sbat_data.o /dev/null
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o shim.o /build/shim-15.7/shim.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o globals.o /build/shim-15.7/globals.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o mok.o /build/shim-15.7/mok.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o netboot.o /build/shim-15.7/netboot.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\" -c -o cert.o /build/shim-15.7/cert.S
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o replacements.o /build/shim-15.7/replacements.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o tpm.o /build/shim-15.7/tpm.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o version.o version.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o errlog.o /build/shim-15.7/errlog.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o sbat.o /build/shim-15.7/sbat.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\" -x c -c -o sbat_data.o /dev/null
 objcopy --add-section .sbat=/build/shim-15.7/data/sbat.csv \
 	--set-section-flags .sbat=contents,alloc,load,readonly,data \
 	sbat_data.o
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\" -c -o sbat_var.o /build/shim-15.7/sbat_var.S
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o pe.o /build/shim-15.7/pe.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o httpboot.o /build/shim-15.7/httpboot.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o csv.o /build/shim-15.7/csv.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o load-options.o /build/shim-15.7/load-options.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\" -c -o sbat_var.o /build/shim-15.7/sbat_var.S
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o pe.o /build/shim-15.7/pe.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o httpboot.o /build/shim-15.7/httpboot.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o csv.o /build/shim-15.7/csv.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o load-options.o /build/shim-15.7/load-options.c
 for i in Hash Hmac Cipher Rand Pk Pem SysCall; do mkdir -p Cryptlib/$i; done
 make TOPDIR=/build/shim-15.7 VPATH=/build/shim-15.7/Cryptlib -C Cryptlib -f /build/shim-15.7/Cryptlib/Makefile
 make[1]: Entering directory '/build/shim-15.7/build-x64/Cryptlib'
@@ -1055,7 +1062,7 @@ make[2]: Entering directory '/build/shim-15.7/build-x64/gnu-efi/x86_64/gnuefi'
 gcc -I/build/shim-15.7/gnu-efi//gnuefi -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -Wno-error=pragmas -mno-red-zone -mno-avx -fpic  -Os -Wall -Wextra -Wno-missing-field-initializers -Werror -fshort-wchar -fno-strict-aliasing -ffreestanding -fno-stack-protector -fno-stack-check -nostdinc   -isystem /build/shim-15.7/gnu-efi/../include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -fno-merge-all-constants -DCONFIG_x86_64 -DGNU_EFI_USE_MS_ABI -DGNU_EFI_USE_EXTERNAL_STDARG -maccumulate-outgoing-args --std=c11 -c /build/shim-15.7/gnu-efi//gnuefi/crt0-efi-x86_64.S -o crt0-efi-x86_64.o
 gcc -I/build/shim-15.7/gnu-efi//gnuefi -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -Wno-error=pragmas -mno-red-zone -mno-avx -fpic  -Os -Wall -Wextra -Wno-missing-field-initializers -Werror -fshort-wchar -fno-strict-aliasing -ffreestanding -fno-stack-protector -fno-stack-check -nostdinc   -isystem /build/shim-15.7/gnu-efi/../include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -fno-merge-all-constants -DCONFIG_x86_64 -DGNU_EFI_USE_MS_ABI -DGNU_EFI_USE_EXTERNAL_STDARG -maccumulate-outgoing-args --std=c11 -c /build/shim-15.7/gnu-efi//gnuefi/reloc_x86_64.c -o reloc_x86_64.o
 gcc-ar rv -U libgnuefi.a reloc_x86_64.o
-[91m/usr/bin/ar: [0m[91mcreating libgnuefi.a[0m[91m
+[91m/usr/bin/ar: creating libgnuefi.a
 [0ma - reloc_x86_64.o
 make[2]: Leaving directory '/build/shim-15.7/build-x64/gnu-efi/x86_64/gnuefi'
 mkdir -p /build/shim-15.7/build-x64/gnu-efi/x86_64/inc
@@ -1076,7 +1083,7 @@ set_dll_characteristics():360: Updating DLL Characteristics from 0x0000 to 0x010
 ms_validation():375: NX-Compat-Flag: PASS
 ms_validation():380:   4K-Alignment: PASS
 ms_validation():394: Section-Wr-Exe: PASS
-fix_checksum():446: Updating checksum from 0x000eb52d to 0x000eb62d
+fix_checksum():446: Updating checksum from 0x000f285e to 0x000f295e
 objcopy -D -j .text -j .sdata -j .data \
 	-j .dynamic -j .rodata -j .rel* \
 	-j .rela* -j .dyn -j .reloc -j .eh_frame -j .sbat \
@@ -1085,9 +1092,9 @@ objcopy -D -j .text -j .sdata -j .data \
 	-j .debug_line -j .debug_str -j .debug_ranges \
 	-j .note.gnu.build-id \
 	shimx64.so shimx64.efi.debug
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o MokManager.o /build/shim-15.7/MokManager.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o PasswordCrypt.o /build/shim-15.7/PasswordCrypt.c
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o crypt_blowfish.o /build/shim-15.7/crypt_blowfish.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o MokManager.o /build/shim-15.7/MokManager.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o PasswordCrypt.o /build/shim-15.7/PasswordCrypt.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o crypt_blowfish.o /build/shim-15.7/crypt_blowfish.c
 ld -o mmx64.so --hash-style=sysv -nostdlib -znocombreloc -T /build/shim-15.7/elf_x86_64_efi.lds -shared -Bsymbolic -Lgnu-efi/x86_64/gnuefi -Lgnu-efi/x86_64/lib -LCryptlib -LCryptlib/OpenSSL gnu-efi/x86_64/gnuefi/crt0-efi-x86_64.o --build-id=sha1  --no-undefined MokManager.o PasswordCrypt.o crypt_blowfish.o errlog.o sbat_data.o globals.o Cryptlib/libcryptlib.a Cryptlib/OpenSSL/libopenssl.a lib/lib.a gnu-efi/x86_64/lib/libefi.a gnu-efi/x86_64/gnuefi/libgnuefi.a -lefi -lgnuefi --start-group Cryptlib/libcryptlib.a Cryptlib/OpenSSL/libopenssl.a --end-group /usr/lib/gcc/x86_64-linux-gnu/10/libgcc.a lib/lib.a
 objcopy -D -j .text -j .sdata -j .data \
 	-j .dynamic -j .rodata -j .rel* \
@@ -1097,7 +1104,7 @@ objcopy -D -j .text -j .sdata -j .data \
 	-j .debug_line -j .debug_str -j .debug_ranges \
 	-j .note.gnu.build-id \
 	mmx64.so mmx64.efi.debug
-gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2.der\"   -c -o fallback.o /build/shim-15.7/fallback.c
+gcc -std=gnu11 -ggdb -ffreestanding -fmacro-prefix-map=/build/shim-15.7/= -fno-stack-protector -fno-strict-aliasing -fpic -fshort-wchar -Os -Wall -Wextra -Wno-missing-field-initializers  -mno-mmx -mno-sse -mno-red-zone -nostdinc -maccumulate-outgoing-args  -m64 -DMDE_CPU_X64 -DPAGE_SIZE=4096 -Werror -nostdinc -I/build/shim-15.7/Cryptlib -I/build/shim-15.7/Cryptlib/Include -I/build/shim-15.7/gnu-efi/inc -I/build/shim-15.7/gnu-efi/inc/x86_64 -I/build/shim-15.7/gnu-efi/inc/protocol -I/build/shim-15.7/include -iquote /build/shim-15.7 -iquote /build/shim-15.7/build-x64 -isystem /build/shim-15.7/include/system -isystem /usr/lib/gcc/x86_64-linux-gnu/10/include -DDEFAULT_LOADER='L"\\\\grubx64.efi"' -DDEFAULT_LOADER_CHAR='"\\\\grubx64.efi"' -DEFI_ARCH='L"x64"' -DDEBUGDIR='L"/usr/lib/debug/usr/share/shim/x64-15.7/"' -DVENDOR_CERT_FILE=\"../10ZiG_SecureBoot2023.der\"   -c -o fallback.o /build/shim-15.7/fallback.c
 ld -o fbx64.so --hash-style=sysv -nostdlib -znocombreloc -T /build/shim-15.7/elf_x86_64_efi.lds -shared -Bsymbolic -Lgnu-efi/x86_64/gnuefi -Lgnu-efi/x86_64/lib -LCryptlib -LCryptlib/OpenSSL gnu-efi/x86_64/gnuefi/crt0-efi-x86_64.o --build-id=sha1  --no-undefined fallback.o tpm.o errlog.o sbat_data.o globals.o Cryptlib/libcryptlib.a Cryptlib/OpenSSL/libopenssl.a lib/lib.a gnu-efi/x86_64/lib/libefi.a gnu-efi/x86_64/gnuefi/libgnuefi.a -lefi -lgnuefi --start-group Cryptlib/libcryptlib.a Cryptlib/OpenSSL/libopenssl.a --end-group /usr/lib/gcc/x86_64-linux-gnu/10/libgcc.a lib/lib.a
 objcopy -D -j .text -j .sdata -j .data \
 	-j .dynamic -j .rodata -j .rel* \
@@ -1130,22 +1137,22 @@ ms_validation():380:   4K-Alignment: PASS
 ms_validation():394: Section-Wr-Exe: PASS
 fix_checksum():446: Updating checksum from 0x000257c7 to 0x000258c7
 make: Leaving directory '/build/shim-15.7/build-x64'
-Removing intermediate container 6a45e378915f
- ---> d48398721a1a
+Removing intermediate container 8988d96653b4
+ ---> a296edaaad24
 Step 17/22 : RUN mkdir /build/output
- ---> Running in a2d7326b3737
-Removing intermediate container a2d7326b3737
- ---> b09c26caed9a
+ ---> Running in 6c8d9c0fe44d
+Removing intermediate container 6c8d9c0fe44d
+ ---> 07029810a6c3
 Step 18/22 : RUN cp build-x64/shimx64.efi /build/output
- ---> Running in f85e7f836ff1
-Removing intermediate container f85e7f836ff1
- ---> 3129769f2bd1
+ ---> Running in 1f0401e7e725
+Removing intermediate container 1f0401e7e725
+ ---> 729ef1685f4a
 Step 19/22 : RUN cp ${CERT_FILE} /build/output
- ---> Running in c1ce8c608b7a
-Removing intermediate container c1ce8c608b7a
- ---> 83af5feff0d4
+ ---> Running in 3212d911a504
+Removing intermediate container 3212d911a504
+ ---> d5ce867f5b1a
 Step 20/22 : RUN objdump -s -j .sbatlevel /build/output/shimx64.efi
- ---> Running in 93c72e5024c9
+ ---> Running in 816aae4d895a
 
 /build/output/shimx64.efi:     file format pei-x86-64
 
@@ -1155,10 +1162,10 @@ Contents of section .sbatlevel:
  85020 75622c32 0a007362 61742c31 2c323032  ub,2..sbat,1,202
  85030 32313131 3530300a 7368696d 2c320a67  2111500.shim,2.g
  85040 7275622c 330a00                      rub,3..         
-Removing intermediate container 93c72e5024c9
- ---> 8cbf2967e004
+Removing intermediate container 816aae4d895a
+ ---> 1ec16d331996
 Step 21/22 : RUN objdump -j .sbat -s /build/output/shimx64.efi
- ---> Running in 5407fdc523fd
+ ---> Running in e835d97a51f7
 
 /build/output/shimx64.efi:     file format pei-x86-64
 
@@ -1176,13 +1183,13 @@ Contents of section .sbat:
  d20a0 2c736869 6d2c3135 2e372c6d 61696c3a  ,shim,15.7,mail:
  d20b0 73656375 7265626f 6f744031 307a6967  secureboot@10zig
  d20c0 2e636f6d 0a                          .com.           
-Removing intermediate container 5407fdc523fd
- ---> 1a35b128509e
+Removing intermediate container e835d97a51f7
+ ---> 1a703ffebb2b
 Step 22/22 : RUN sha256sum /build/output/*
- ---> Running in bc9fe5019b48
-b44d1a8eaff999d82f8339a3242259dc9518a01d0b8723ad53e96a702318dc4e  /build/output/10ZiG_SecureBoot2.der
-cbd7b5b8a73483268102955c28fd467f830cbd0f0b1de92904c90371392daa97  /build/output/shimx64.efi
-Removing intermediate container bc9fe5019b48
- ---> af270e0ec1a0
-Successfully built af270e0ec1a0
+ ---> Running in 10094dfa1107
+cc151ec9b8ce1266733af29941e1ea7afcc39ddaa73bfcbe0e967b37f41da994  /build/output/10ZiG_SecureBoot2023.der
+6236686fd6d099fdbbb78024829f7818d79fa7ef8b84478da5946096ccd13373  /build/output/shimx64.efi
+Removing intermediate container 10094dfa1107
+ ---> 276f5f68506a
+Successfully built 276f5f68506a
 Successfully tagged shim:latest
