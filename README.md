@@ -158,6 +158,7 @@ Yes, we have:
 - support for a specific type of EMMC present in our hardware
 - 10ZiG Boot Logo
 - lockdown: also lock down previous kgdb use (eadb2f47a3ced5c64b23b90fd2a3463f63726066)
+- force NX_COMPAT (changed DllCharacteristcs from 0 to IMAGE_DLL_CHARACTERISTICS_NX_COMPAT in arch/x86/boot/header.S)
 
 *******************************************************************************
 ### If you use vendor_db functionality of providing multiple certificates and/or hashes please briefly describe your certificate setup.
