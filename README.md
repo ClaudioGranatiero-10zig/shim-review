@@ -194,7 +194,7 @@ None, that's our first submission.
 *******************************************************************************
 ### What is the SHA256 hash of your final SHIM binary?
 *******************************************************************************
-6236686fd6d099fdbbb78024829f7818d79fa7ef8b84478da5946096ccd13373
+0cf9548aff3b614288db93172bca3efd858d21a7e2540c2900bd830da2122ce2
 
 *******************************************************************************
 ### How do you manage and protect the keys used in your SHIM?
