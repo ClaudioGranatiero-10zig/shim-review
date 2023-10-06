@@ -1,17 +1,20 @@
 # v1f
 FROM debian:bullseye
-ARG CERT_FILE="10ZiG_SecureBoot2023.der"
+ARG CERT_FILE="10ZiG_SecureBootCA_RootCA.der"
+
+env DEBIAN_FRONTEND=noninteractive 
 
 # dependencies
-RUN apt-get -y -qq update
-RUN apt-get -y -qq install gcc make bzip2 efitools curl wget git
+RUN apt-get update -y
+
+RUN apt-get install -y ca-certificates openssl coreutils bash tar xz-utils sed diffutils patch pesign libelf-dev binutils-x86-64-linux-gnu gcc make bzip2 efitools curl wget git
 # 
 # clone shim
 WORKDIR /build
 RUN mkdir -p /build/patches
 COPY patches /build/patches
 
-RUN wget https://github.com/rhboot/shim/releases/download/15.7/shim-15.7.tar.bz2
+RUN wget --no-check-certificate https://github.com/rhboot/shim/releases/download/15.7/shim-15.7.tar.bz2
 RUN tar jxf shim-15.7.tar.bz2
 WORKDIR /build/shim-15.7
 
