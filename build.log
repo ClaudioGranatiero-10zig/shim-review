@@ -2,37 +2,31 @@ DEPRECATED: The legacy builder is deprecated and will be removed in a future rel
             Install the buildx component to build images with BuildKit:
             https://docs.docker.com/go/buildx/
 
-Sending build context to Docker daemon     39MB
+Sending build context to Docker daemon  8.841MB
 Step 1/23 : FROM debian:bullseye
-bullseye: Pulling from library/debian
-ddf874abf16c: Pulling fs layer
-ddf874abf16c: Download complete
-ddf874abf16c: Pull complete
-Digest: sha256:54d33aaad0bc936a9a40d856764c7bc35c0afaa9cab51f88bb95f6cd8004438d
-Status: Downloaded newer image for debian:bullseye
  ---> 909f4919a453
 Step 2/23 : ARG CERT_FILE="10ZiG_SecureBootCA_RootCA.der"
- ---> Running in 34da9aac3036
-Removing intermediate container 34da9aac3036
- ---> a00461dfede2
+ ---> Running in f7002ce4c7ad
+Removing intermediate container f7002ce4c7ad
+ ---> 3da1d94992c1
 Step 3/23 : env DEBIAN_FRONTEND=noninteractive
- ---> Running in e49eee3df795
-Removing intermediate container e49eee3df795
- ---> 45a28587848e
+ ---> Running in 282a0a9d05d4
+Removing intermediate container 282a0a9d05d4
+ ---> 9be11e6ec24e
 Step 4/23 : RUN apt-get update -y
- ---> Running in abb32582f1e8
+ ---> Running in a52075fa796d
 Get:1 http://deb.debian.org/debian bullseye InRelease [116 kB]
 Get:2 http://deb.debian.org/debian-security bullseye-security InRelease [48.4 kB]
 Get:3 http://deb.debian.org/debian bullseye-updates InRelease [44.1 kB]
-Get:4 http://deb.debian.org/debian bullseye/main amd64 Packages [8183 kB]
-Get:5 http://deb.debian.org/debian-security bullseye-security/main amd64 Packages [254 kB]
+Get:4 http://deb.debian.org/debian bullseye/main amd64 Packages [8062 kB]
+Get:5 http://deb.debian.org/debian-security bullseye-security/main amd64 Packages [256 kB]
 Get:6 http://deb.debian.org/debian bullseye-updates/main amd64 Packages [17.4 kB]
-Fetched 8662 kB in 2s (4731 kB/s)
+Fetched 8544 kB in 3s (3308 kB/s)
 Reading package lists...
-Removing intermediate container abb32582f1e8
- ---> 97031a7d60ea
+Removing intermediate container a52075fa796d
+ ---> 87475e1eed82
 Step 5/23 : RUN apt-get install -y ca-certificates openssl coreutils bash tar xz-utils sed diffutils patch pesign libelf-dev binutils-x86-64-linux-gnu gcc make bzip2 efitools curl wget git
- ---> Running in d3ef5aad710f
+ ---> Running in 3f1d04cfbdb2
 Reading package lists...
 Building dependency tree...
 Reading state information...
@@ -97,8 +91,8 @@ The following NEW packages will be installed:
   shared-mime-info ucf wget xauth xdg-user-dirs xz-utils zlib1g-dev
 The following packages will be upgraded:
   libc6
-1 upgraded, 120 newly installed, 0 to remove and 1 not upgraded.
-Need to get 97.8 MB of archives.
+1 upgraded, 120 newly installed, 0 to remove and 12 not upgraded.
+Need to get 97.9 MB of archives.
 After this operation, 373 MB of additional disk space will be used.
 Get:1 http://deb.debian.org/debian bullseye/main amd64 perl-modules-5.32 all 5.32.1-4+deb11u2 [2823 kB]
 Get:2 http://deb.debian.org/debian-security bullseye-security/main amd64 libc6 amd64 2.31-13+deb11u7 [2823 kB]
@@ -116,15 +110,15 @@ Get:13 http://deb.debian.org/debian bullseye/main amd64 libreadline8 amd64 8.1-1
 Get:14 http://deb.debian.org/debian bullseye/main amd64 netbase all 6.3 [19.9 kB]
 Get:15 http://deb.debian.org/debian bullseye/main amd64 sensible-utils all 0.0.14 [14.8 kB]
 Get:16 http://deb.debian.org/debian bullseye/main amd64 bzip2 amd64 1.0.8-4 [49.3 kB]
-Get:17 http://deb.debian.org/debian-security bullseye-security/main amd64 openssl amd64 1.1.1n-0+deb11u5 [854 kB]
+Get:17 http://deb.debian.org/debian bullseye/main amd64 openssl amd64 1.1.1w-0+deb11u1 [859 kB]
 Get:18 http://deb.debian.org/debian bullseye/main amd64 ca-certificates all 20210119 [158 kB]
 Get:19 http://deb.debian.org/debian bullseye/main amd64 manpages all 5.10-1 [1412 kB]
 Get:20 http://deb.debian.org/debian bullseye/main amd64 libmd0 amd64 1.0.3-3 [28.0 kB]
-Get:21 http://deb.debian.org/debian bullseye/main amd64 libbsd0 amd64 0.11.3-1 [108 kB]
+Get:21 http://deb.debian.org/debian bullseye/main amd64 libbsd0 amd64 0.11.3-1+deb11u1 [108 kB]
 Get:22 http://deb.debian.org/debian bullseye/main amd64 libedit2 amd64 3.1-20191231-2+b1 [96.7 kB]
 Get:23 http://deb.debian.org/debian bullseye/main amd64 libcbor0 amd64 0.5.0+dfsg-2 [24.0 kB]
 Get:24 http://deb.debian.org/debian bullseye/main amd64 libfido2-1 amd64 1.6.0-2 [53.3 kB]
-Get:25 http://deb.debian.org/debian bullseye/main amd64 openssh-client amd64 1:8.4p1-5+deb11u1 [929 kB]
+Get:25 http://deb.debian.org/debian bullseye/main amd64 openssh-client amd64 1:8.4p1-5+deb11u2 [930 kB]
 Get:26 http://deb.debian.org/debian bullseye/main amd64 ucf all 3.0043 [74.0 kB]
 Get:27 http://deb.debian.org/debian bullseye/main amd64 libpsl5 amd64 0.21.0-1.2 [57.3 kB]
 Get:28 http://deb.debian.org/debian bullseye/main amd64 wget amd64 1.21-1+deb11u1 [964 kB]
@@ -149,8 +143,8 @@ Get:46 http://deb.debian.org/debian bullseye/main amd64 libldap-2.4-2 amd64 2.4.
 Get:47 http://deb.debian.org/debian bullseye/main amd64 libnghttp2-14 amd64 1.43.0-1 [77.1 kB]
 Get:48 http://deb.debian.org/debian bullseye/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2+b2 [60.8 kB]
 Get:49 http://deb.debian.org/debian bullseye/main amd64 libssh2-1 amd64 1.9.0-2 [156 kB]
-Get:50 http://deb.debian.org/debian bullseye/main amd64 libcurl4 amd64 7.74.0-1.3+deb11u7 [346 kB]
-Get:51 http://deb.debian.org/debian bullseye/main amd64 curl amd64 7.74.0-1.3+deb11u7 [270 kB]
+Get:50 http://deb.debian.org/debian-security bullseye-security/main amd64 libcurl4 amd64 7.74.0-1.3+deb11u10 [347 kB]
+Get:51 http://deb.debian.org/debian-security bullseye-security/main amd64 curl amd64 7.74.0-1.3+deb11u10 [271 kB]
 Get:52 http://deb.debian.org/debian bullseye/main amd64 sbsigntool amd64 0.9.2-2 [63.5 kB]
 Get:53 http://deb.debian.org/debian bullseye/main amd64 efitools amd64 1.9.2-2~deb11u1 [137 kB]
 Get:54 http://deb.debian.org/debian bullseye/main amd64 fonts-dejavu-core all 2.37-2 [1069 kB]
@@ -167,7 +161,7 @@ Get:64 http://deb.debian.org/debian bullseye/main amd64 libquadmath0 amd64 10.2.
 Get:65 http://deb.debian.org/debian bullseye/main amd64 libgcc-10-dev amd64 10.2.1-6 [2328 kB]
 Get:66 http://deb.debian.org/debian bullseye/main amd64 gcc-10 amd64 10.2.1-6 [17.0 MB]
 Get:67 http://deb.debian.org/debian bullseye/main amd64 gcc amd64 4:10.2.1-1 [5192 B]
-Get:68 http://deb.debian.org/debian bullseye/main amd64 libcurl3-gnutls amd64 7.74.0-1.3+deb11u7 [343 kB]
+Get:68 http://deb.debian.org/debian-security bullseye-security/main amd64 libcurl3-gnutls amd64 7.74.0-1.3+deb11u10 [344 kB]
 Get:69 http://deb.debian.org/debian bullseye/main amd64 libexpat1 amd64 2.2.10-2+deb11u5 [98.2 kB]
 Get:70 http://deb.debian.org/debian bullseye/main amd64 liberror-perl all 0.17029-1 [31.0 kB]
 Get:71 http://deb.debian.org/debian bullseye/main amd64 git-man all 1:2.30.2-1+deb11u2 [1828 kB]
@@ -179,7 +173,7 @@ Get:76 http://deb.debian.org/debian bullseye/main amd64 libfontconfig1 amd64 2.1
 Get:77 http://deb.debian.org/debian bullseye/main amd64 libjpeg62-turbo amd64 1:2.0.6-4 [151 kB]
 Get:78 http://deb.debian.org/debian bullseye/main amd64 libdeflate0 amd64 1.7-1 [53.1 kB]
 Get:79 http://deb.debian.org/debian bullseye/main amd64 libjbig0 amd64 2.1-3.1+b2 [31.0 kB]
-Get:80 http://deb.debian.org/debian-security bullseye-security/main amd64 libwebp6 amd64 0.6.1-2.1+deb11u2 [259 kB]
+Get:80 http://deb.debian.org/debian bullseye/main amd64 libwebp6 amd64 0.6.1-2.1+deb11u2 [259 kB]
 Get:81 http://deb.debian.org/debian bullseye/main amd64 libtiff5 amd64 4.2.0-1+deb11u4 [290 kB]
 Get:82 http://deb.debian.org/debian bullseye/main amd64 libxau6 amd64 1:1.0.9-1 [19.7 kB]
 Get:83 http://deb.debian.org/debian bullseye/main amd64 libxdmcp6 amd64 1:1.1.2-3 [26.3 kB]
@@ -189,7 +183,7 @@ Get:86 http://deb.debian.org/debian-security bullseye-security/main amd64 libx11
 Get:87 http://deb.debian.org/debian-security bullseye-security/main amd64 libxpm4 amd64 1:3.5.12-1.1+deb11u1 [50.0 kB]
 Get:88 http://deb.debian.org/debian bullseye/main amd64 libgd3 amd64 2.3.0-2 [137 kB]
 Get:89 http://deb.debian.org/debian-security bullseye-security/main amd64 libc-devtools amd64 2.31-13+deb11u7 [246 kB]
-Get:90 http://deb.debian.org/debian-security bullseye-security/main amd64 linux-libc-dev amd64 5.10.191-1 [1652 kB]
+Get:90 http://deb.debian.org/debian bullseye/main amd64 linux-libc-dev amd64 5.10.197-1 [1668 kB]
 Get:91 http://deb.debian.org/debian bullseye/main amd64 libcrypt-dev amd64 1:4.4.18-4 [104 kB]
 Get:92 http://deb.debian.org/debian bullseye/main amd64 libtirpc-dev amd64 1.3.1-1+deb11u1 [191 kB]
 Get:93 http://deb.debian.org/debian bullseye/main amd64 libnsl-dev amd64 1.3.0-2 [66.4 kB]
@@ -222,7 +216,7 @@ Get:119 http://deb.debian.org/debian bullseye/main amd64 shared-mime-info amd64 
 Get:120 http://deb.debian.org/debian bullseye/main amd64 xauth amd64 1:1.1-1 [40.5 kB]
 Get:121 http://deb.debian.org/debian bullseye/main amd64 xdg-user-dirs amd64 0.17-2 [53.8 kB]
 [91mdebconf: delaying package configuration, since apt-utils is not installed
-[0mFetched 97.8 MB in 5s (18.9 MB/s)
+[0mFetched 97.9 MB in 8s (11.7 MB/s)
 Selecting previously unselected package perl-modules-5.32.
 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6664 files and directories currently installed.)
 Preparing to unpack .../perl-modules-5.32_5.32.1-4+deb11u2_all.deb ...
@@ -274,8 +268,8 @@ Selecting previously unselected package bzip2.
 Preparing to unpack .../013-bzip2_1.0.8-4_amd64.deb ...
 Unpacking bzip2 (1.0.8-4) ...
 Selecting previously unselected package openssl.
-Preparing to unpack .../014-openssl_1.1.1n-0+deb11u5_amd64.deb ...
-Unpacking openssl (1.1.1n-0+deb11u5) ...
+Preparing to unpack .../014-openssl_1.1.1w-0+deb11u1_amd64.deb ...
+Unpacking openssl (1.1.1w-0+deb11u1) ...
 Selecting previously unselected package ca-certificates.
 Preparing to unpack .../015-ca-certificates_20210119_all.deb ...
 Unpacking ca-certificates (20210119) ...
@@ -286,8 +280,8 @@ Selecting previously unselected package libmd0:amd64.
 Preparing to unpack .../017-libmd0_1.0.3-3_amd64.deb ...
 Unpacking libmd0:amd64 (1.0.3-3) ...
 Selecting previously unselected package libbsd0:amd64.
-Preparing to unpack .../018-libbsd0_0.11.3-1_amd64.deb ...
-Unpacking libbsd0:amd64 (0.11.3-1) ...
+Preparing to unpack .../018-libbsd0_0.11.3-1+deb11u1_amd64.deb ...
+Unpacking libbsd0:amd64 (0.11.3-1+deb11u1) ...
 Selecting previously unselected package libedit2:amd64.
 Preparing to unpack .../019-libedit2_3.1-20191231-2+b1_amd64.deb ...
 Unpacking libedit2:amd64 (3.1-20191231-2+b1) ...
@@ -298,8 +292,8 @@ Selecting previously unselected package libfido2-1:amd64.
 Preparing to unpack .../021-libfido2-1_1.6.0-2_amd64.deb ...
 Unpacking libfido2-1:amd64 (1.6.0-2) ...
 Selecting previously unselected package openssh-client.
-Preparing to unpack .../022-openssh-client_1%3a8.4p1-5+deb11u1_amd64.deb ...
-Unpacking openssh-client (1:8.4p1-5+deb11u1) ...
+Preparing to unpack .../022-openssh-client_1%3a8.4p1-5+deb11u2_amd64.deb ...
+Unpacking openssh-client (1:8.4p1-5+deb11u2) ...
 Selecting previously unselected package ucf.
 Preparing to unpack .../023-ucf_3.0043_all.deb ...
 Moving old data out of the way
@@ -374,11 +368,11 @@ Selecting previously unselected package libssh2-1:amd64.
 Preparing to unpack .../046-libssh2-1_1.9.0-2_amd64.deb ...
 Unpacking libssh2-1:amd64 (1.9.0-2) ...
 Selecting previously unselected package libcurl4:amd64.
-Preparing to unpack .../047-libcurl4_7.74.0-1.3+deb11u7_amd64.deb ...
-Unpacking libcurl4:amd64 (7.74.0-1.3+deb11u7) ...
+Preparing to unpack .../047-libcurl4_7.74.0-1.3+deb11u10_amd64.deb ...
+Unpacking libcurl4:amd64 (7.74.0-1.3+deb11u10) ...
 Selecting previously unselected package curl.
-Preparing to unpack .../048-curl_7.74.0-1.3+deb11u7_amd64.deb ...
-Unpacking curl (7.74.0-1.3+deb11u7) ...
+Preparing to unpack .../048-curl_7.74.0-1.3+deb11u10_amd64.deb ...
+Unpacking curl (7.74.0-1.3+deb11u10) ...
 Selecting previously unselected package sbsigntool.
 Preparing to unpack .../049-sbsigntool_0.9.2-2_amd64.deb ...
 Unpacking sbsigntool (0.9.2-2) ...
@@ -428,8 +422,8 @@ Selecting previously unselected package gcc.
 Preparing to unpack .../064-gcc_4%3a10.2.1-1_amd64.deb ...
 Unpacking gcc (4:10.2.1-1) ...
 Selecting previously unselected package libcurl3-gnutls:amd64.
-Preparing to unpack .../065-libcurl3-gnutls_7.74.0-1.3+deb11u7_amd64.deb ...
-Unpacking libcurl3-gnutls:amd64 (7.74.0-1.3+deb11u7) ...
+Preparing to unpack .../065-libcurl3-gnutls_7.74.0-1.3+deb11u10_amd64.deb ...
+Unpacking libcurl3-gnutls:amd64 (7.74.0-1.3+deb11u10) ...
 Selecting previously unselected package libexpat1:amd64.
 Preparing to unpack .../066-libexpat1_2.2.10-2+deb11u5_amd64.deb ...
 Unpacking libexpat1:amd64 (2.2.10-2+deb11u5) ...
@@ -494,8 +488,8 @@ Selecting previously unselected package libc-devtools.
 Preparing to unpack .../086-libc-devtools_2.31-13+deb11u7_amd64.deb ...
 Unpacking libc-devtools (2.31-13+deb11u7) ...
 Selecting previously unselected package linux-libc-dev:amd64.
-Preparing to unpack .../087-linux-libc-dev_5.10.191-1_amd64.deb ...
-Unpacking linux-libc-dev:amd64 (5.10.191-1) ...
+Preparing to unpack .../087-linux-libc-dev_5.10.197-1_amd64.deb ...
+Unpacking linux-libc-dev:amd64 (5.10.197-1) ...
 Selecting previously unselected package libcrypt-dev:amd64.
 Preparing to unpack .../088-libcrypt-dev_1%3a4.4.18-4_amd64.deb ...
 Unpacking libcrypt-dev:amd64 (1:4.4.18-4) ...
@@ -608,7 +602,7 @@ Setting up binutils-common:amd64 (2.35.2-2) ...
 Setting up libnghttp2-14:amd64 (1.43.0-1) ...
 Setting up libdeflate0:amd64 (1.7-1) ...
 Setting up less (551-2) ...
-Setting up linux-libc-dev:amd64 (5.10.191-1) ...
+Setting up linux-libc-dev:amd64 (5.10.197-1) ...
 Setting up libctf-nobfd0:amd64 (2.35.2-2) ...
 Setting up libgomp1:amd64 (10.2.1-6) ...
 Setting up bzip2 (1.0.8-4) ...
@@ -652,8 +646,8 @@ Setting up libbinutils:amd64 (2.35.2-2) ...
 Setting up libfido2-1:amd64 (1.6.0-2) ...
 Setting up libisl23:amd64 (0.23-1) ...
 Setting up libc-dev-bin (2.31-13+deb11u7) ...
-Setting up openssl (1.1.1n-0+deb11u5) ...
-Setting up libbsd0:amd64 (0.11.3-1) ...
+Setting up openssl (1.1.1w-0+deb11u1) ...
+Setting up libbsd0:amd64 (0.11.3-1+deb11u1) ...
 Setting up libelf1:amd64 (0.183-1) ...
 Setting up readline-common (8.1-1) ...
 Setting up publicsuffix (20220811.1734-0+deb11u1) ...
@@ -679,7 +673,7 @@ Setting up pcscd (1.9.1-1) ...
 invoke-rc.d: could not determine current runlevel
 invoke-rc.d: policy-rc.d denied execution of start.
 Setting up libldap-2.4-2:amd64 (2.4.57+dfsg-3+deb11u1) ...
-Setting up libcurl3-gnutls:amd64 (7.74.0-1.3+deb11u7) ...
+Setting up libcurl3-gnutls:amd64 (7.74.0-1.3+deb11u10) ...
 Setting up libnss3:amd64 (2:3.61-1+deb11u3) ...
 Setting up coolkey (1.1.0-16) ...
 Setting up ca-certificates (20210119) ...
@@ -691,16 +685,16 @@ Setting up libgdbm-compat4:amd64 (1.19-2) ...
 Setting up ucf (3.0043) ...
 Setting up libperl5.32:amd64 (5.32.1-4+deb11u2) ...
 Setting up cpp (4:10.2.1-1) ...
-Setting up libcurl4:amd64 (7.74.0-1.3+deb11u7) ...
+Setting up libcurl4:amd64 (7.74.0-1.3+deb11u10) ...
 Setting up libc6-dev:amd64 (2.31-13+deb11u7) ...
 Setting up libx11-6:amd64 (2:1.7.2-1+deb11u2) ...
-Setting up curl (7.74.0-1.3+deb11u7) ...
+Setting up curl (7.74.0-1.3+deb11u10) ...
 Setting up libxmuu1:amd64 (2:1.1.2-2+b3) ...
 Setting up libnss3-tools (2:3.61-1+deb11u3) ...
 Setting up binutils-x86-64-linux-gnu (2.35.2-2) ...
 Setting up libxpm4:amd64 (1:3.5.12-1.1+deb11u1) ...
 Setting up fontconfig-config (2.13.1-4.2) ...
-Setting up openssh-client (1:8.4p1-5+deb11u1) ...
+Setting up openssh-client (1:8.4p1-5+deb11u2) ...
 Setting up libxext6:amd64 (2:1.3.3-1.1) ...
 Setting up pesign (0.112-6) ...
 Setting up binutils (2.35.2-2) ...
@@ -721,93 +715,93 @@ Updating certificates in /etc/ssl/certs...
 0 added, 0 removed; done.
 Running hooks in /etc/ca-certificates/update.d...
 done.
-Removing intermediate container d3ef5aad710f
- ---> a3fdda13f810
+Removing intermediate container 3f1d04cfbdb2
+ ---> 75d3df57783c
 Step 6/23 : WORKDIR /build
- ---> Running in 0f59489fee5e
-Removing intermediate container 0f59489fee5e
- ---> 75508cdcf621
+ ---> Running in 0532a3696551
+Removing intermediate container 0532a3696551
+ ---> 4664f5a40f86
 Step 7/23 : RUN mkdir -p /build/patches
- ---> Running in a05b9f8afa47
-Removing intermediate container a05b9f8afa47
- ---> be6c3a9a8ace
+ ---> Running in 0d3e3c82eb35
+Removing intermediate container 0d3e3c82eb35
+ ---> 5db1cf9267c9
 Step 8/23 : COPY patches /build/patches
- ---> 757c7b48725c
+ ---> b14e2ef296b6
 Step 9/23 : RUN wget --no-check-certificate https://github.com/rhboot/shim/releases/download/15.7/shim-15.7.tar.bz2
- ---> Running in 71c76daac47a
-[91m--2023-10-06 06:40:40--  https://github.com/rhboot/shim/releases/download/15.7/shim-15.7.tar.bz2
+ ---> Running in 25fdbeae8f21
+[91m--2023-10-17 06:34:21--  https://github.com/rhboot/shim/releases/download/15.7/shim-15.7.tar.bz2
 [0m[91mResolving github.com (github.com)... [0m[91m140.82.121.3
 Connecting to github.com (github.com)|140.82.121.3|:443... [0m[91mconnected.
 [0m[91mHTTP request sent, awaiting response... [0m[91m302 Found
-Location: https://objects.githubusercontent.com/github-production-release-asset-2e65be/3996476/c417b0cc-a277-43ea-b275-fe5fe39bf382?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231006%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231006T064040Z&X-Amz-Expires=300&X-Amz-Signature=fb8d47d3a210acd986549c19e2820dc76430cb3a3a6a75265bb84ded8a6f9bce&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=3996476&response-content-disposition=attachment%3B%20filename%3Dshim-15.7.tar.bz2&response-content-type=application%2Foctet-stream [following]
---2023-10-06 06:40:40--  https://objects.githubusercontent.com/github-production-release-asset-2e65be/3996476/c417b0cc-a277-43ea-b275-fe5fe39bf382?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231006%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231006T064040Z&X-Amz-Expires=300&X-Amz-Signature=fb8d47d3a210acd986549c19e2820dc76430cb3a3a6a75265bb84ded8a6f9bce&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=3996476&response-content-disposition=attachment%3B%20filename%3Dshim-15.7.tar.bz2&response-content-type=application%2Foctet-stream
-Resolving objects.githubusercontent.com (objects.githubusercontent.com)... [0m[91m185.199.110.133, 185.199.111.133, 185.199.108.133, ...
-Connecting to objects.githubusercontent.com (objects.githubusercontent.com)|185.199.110.133|:443... [0m[91mconnected.
+Location: https://objects.githubusercontent.com/github-production-release-asset-2e65be/3996476/c417b0cc-a277-43ea-b275-fe5fe39bf382?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231017%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231017T063421Z&X-Amz-Expires=300&X-Amz-Signature=03e650710da0da445e3576b95e71f0fb8d43f4a85a30cf91e9e3092b4da4da31&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=3996476&response-content-disposition=attachment%3B%20filename%3Dshim-15.7.tar.bz2&response-content-type=application%2Foctet-stream [following]
+--2023-10-17 06:34:21--  https://objects.githubusercontent.com/github-production-release-asset-2e65be/3996476/c417b0cc-a277-43ea-b275-fe5fe39bf382?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231017%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231017T063421Z&X-Amz-Expires=300&X-Amz-Signature=03e650710da0da445e3576b95e71f0fb8d43f4a85a30cf91e9e3092b4da4da31&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=3996476&response-content-disposition=attachment%3B%20filename%3Dshim-15.7.tar.bz2&response-content-type=application%2Foctet-stream
+Resolving objects.githubusercontent.com (objects.githubusercontent.com)... [0m[91m185.199.109.133, 185.199.111.133, 185.199.108.133, ...
+Connecting to objects.githubusercontent.com (objects.githubusercontent.com)|185.199.109.133|:443... [0m[91mconnected.
 [0m[91mHTTP request sent, awaiting response... [0m[91m200 OK
 Length: 1334863 (1.3M) [application/octet-stream]
 [0m[91mSaving to: 'shim-15.7.tar.bz2'
+[0m[91m
+     0K .......... ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m..  3% 1.80M 1s
+    50K .......... ....[0m[91m...... ..........[0m[91m .......... ......[0m[91m....  7% 2.62M 1s
+   100K .......... .[0m[91m........[0m[91m. .......[0m[91m... .......... ...[0m[91m....... 11% 8.88M 0s
+   150K .........[0m[91m. .......... .....[0m[91m..... .......... .[0m[91m......... 15% 10.5M 0s
+   200K .......[0m[91m... .......... ...[0m[91m....... .........[0m[91m. .......... 19% 4.14M 0s
+   250K .....[0m[91m..... .......... .[0m[91m......... .......[0m[91m... .......... 23% 11.3M 0s
+   300K ...[0m[91m....... .........[0m[91m. .......... .....[0m[91m..... .......... 26% 11.8M 0s
+   350K .[0m[91m......... .......[0m[91m... .......... ...[0m[91m....... .........[0m[91m. 30% 9.13M 0s
+   400K .......... .....[0m[91m..... .......... .[0m[91m......... .......[0m[91m... 34% 11.3M 0s
+   450K .......... ...[0m[91m....... .........[0m[91m. .......... .....[0m[91m..... 38% 1.55M 0s
+   500K .......... .......... .......[0m[91m... .......... ...[0m[91m....... 42%  179M 0s
+   550K .........[0m[91m. .......... .....[0m[91m..... .......... .......... 46%  121M 0s
+   600K .......... .......... .......... .........[0m[91m. .......... 49%  234M 0s
+   650K .......... .......... .......... .......[0m[91m... .......... 53% 4.74M 0s
+   700K ...[0m[91m....... .........[0m[91m. .......... .....[0m[91m..... .......... 57% 19.5M 0s
+   750K .........[0m[91m. .......... .....[0m[91m..... .......... .[0m[91m......... 61% 14.1M 0s
+   800K .......[0m[91m... .......... ...[0m[91m....... .......... .......... 65% 22.7M 0s
+   850K .....[0m[91m..... .......... .[0m[91m......... .......[0m[91m... .......... 69% 19.8M 0s
+   900K .......... .[0m[91m........[0m[91m. .......... .....[0m[91m..... .......... 72% 30.5M 0s
+   950K .[0m[91m......... .......... .......... ...[0m[91m....... .........[0m[91m. 76% 31.6M 0s
+  1000K .......... .....[0m[91m..... .......... .......... .......[0m[91m... 80%  173M 0s
+  1050K .......... ...[0m[91m....... .......... .......... .....[0m[91m..... 84% 39.5M 0s
+  1100K .......... .[0m[91m......... .......[0m[91m... .......... ...[0m[91m....... 88% 11.5M 0s
+  1150K .........[0m[91m. .......... .....[0m[91m..... .......... .[0m[91m......... 92% 11.5M 0s
+  1200K .......[0m[91m... .......... ...[0m[91m....... .........[0m[91m. ...[0m[91m....... 95% 1.82M 0s
+  1250K .........[0m[91m. .......... .....[0m[91m..... .......... .[0m[91m......... 99% 9.72M 0s
+  1300K ...                                                   100% 6.66T=0.2s
 
-     0K .[0m[91m.[0m[91m........ ..[0m[91m...[0m[91m...[0m[91m.. .[0m[91m..[0m[91m...[0m[91m...[0m[91m. .[0m[91m...[0m[91m...[0m[91m.[0m[91m.. ...[0m[91m.....[0m[91m..  3% 2.11M 1s[0m[91m
-    50K .......... ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m..  7% 2.30M 1s
-   100K .......... ....[0m[91m...... ..[0m[91m........[0m[91m .......... ......[0m[91m.... 11% 9.06M 0s
-   150K .......... ..[0m[91m........ ........[0m[91m.. .......... ....[0m[91m...... 15% 10.4M 0s
-   200K ..........[0m[91m .......... ......[0m[91m.... .......... ..[0m[91m........ 19% 4.08M 0s
-   250K ........[0m[91m.. .......... ....[0m[91m...... ..........[0m[91m .......... 23% 13.7M 0s
-   300K ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. .......... 26% 15.1M 0s
-   350K .......... ..........[0m[91m .......... ......[0m[91m.... .......... 30% 25.8M 0s
-   400K .......... ........[0m[91m.. .......... ....[0m[91m...... .......... 34% 22.8M 0s
-   450K .......... ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. 38% 4.33M 0s
-   500K .......... .......... ..........[0m[91m .......... ......[0m[91m.... 42% 16.7M 0s
-   550K ....[0m[91m...... .[0m[91m......... .......... .......... ...[0m[91m....... 46%  128M 0s
-   600K .........[0m[91m. .......... .......... .......... .[0m[91m......... 49% 8.35M 0s
-   650K .......[0m[91m... .......... .......... .........[0m[91m. .......... 53% 8.14M 0s
-   700K .......... .......... .[0m[91m......... .......[0m[91m... .......... 57% 85.6M 0s
-   750K ...[0m[91m....... .........[0m[91m. .......... .......... .......... 61%  114M 0s
-   800K .........[0m[91m. .......... .......... ...[0m[91m....... .........[0m[91m. 65%  100M 0s
-   850K .......... .......... .......... .[0m[91m......... .......[0m[91m... 69%  226M 0s
-   900K .......... .......... .......... .......... .....[0m[91m..... 72%  203M 0s
-   950K .......... .......... .......... .......... ...[0m[91m....... 76% 7.02M 0s
-  1000K .........[0m[91m. .......... .......... .......... .........[0m[91m. 80% 13.6M 0s
-  1050K .......[0m[91m... .......... .......... .......... .......... 84% 96.5M 0s
-  1100K .......... .......... .[0m[91m......... .......... .......... 88%  278M 0s
-  1150K .......... .......... .......... .....[0m[91m..... .......... 92%  280M 0s
-  1200K .......... .......... .......... .......... .........[0m[91m. 95% 5.15M 0s
-  1250K .......... .......... .......... .......... .......... 99%  200M 0s
-  1300K ...                        [0m[91m                           100% 6.66T=0.1s
+2023-10-17 06:34:22 (6.91 MB/s) - 'shim-15.7.tar.bz2' saved [1334863/1334863]
 
-[0m[91m2023-10-06 06:40:41 (10.0 MB/s) - 'shim-15.7.tar.bz2' saved [1334863/1334863]
-
-[0mRemoving intermediate container 71c76daac47a
- ---> 2e665a51e9ef
+[0mRemoving intermediate container 25fdbeae8f21
+ ---> 95b8e1da1dbb
 Step 10/23 : RUN tar jxf shim-15.7.tar.bz2
- ---> Running in 79ce94615ac3
-Removing intermediate container 79ce94615ac3
- ---> f1efb652e8d4
+ ---> Running in 8c4d5fc9b5c2
+Removing intermediate container 8c4d5fc9b5c2
+ ---> 298f6f847b2e
 Step 11/23 : WORKDIR /build/shim-15.7
- ---> Running in 4d677bfb31f7
-Removing intermediate container 4d677bfb31f7
- ---> 79cef4a10a8b
+ ---> Running in 5a33f4e127ea
+Removing intermediate container 5a33f4e127ea
+ ---> ec3cad1e8d6b
 Step 12/23 : RUN git apply /build/patches/*.patch
- ---> Running in 35044106779b
-Removing intermediate container 35044106779b
- ---> cc4719843cf2
+ ---> Running in c151dcebcf57
+Removing intermediate container c151dcebcf57
+ ---> 969f51bb282a
 Step 13/23 : ADD ${CERT_FILE} .
- ---> 51db2d24888d
+ ---> 348295341817
 Step 14/23 : ADD shimx64_10ZiG.sbat .
- ---> 8de431d69325
+ ---> cc8ff57c9653
 Step 15/23 : RUN cat shimx64_10ZiG.sbat >> data/sbat.csv && cat data/sbat.csv
- ---> Running in aabe5319f203
+ ---> Running in 2ee79e18b205
 sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
 shim,3,UEFI shim,shim,1,https://github.com/rhboot/shim
 shim.10zig,1,10ZiG Technology,shim,15.7,mail:secureboot@10zig.com
-Removing intermediate container aabe5319f203
- ---> b0ccc8209aed
+Removing intermediate container 2ee79e18b205
+ ---> c04f636c4e4c
 Step 16/23 : RUN mkdir build-x64
- ---> Running in bfa3a102c6f5
-Removing intermediate container bfa3a102c6f5
- ---> b6cc997fa5ef
+ ---> Running in b7689a62caca
+Removing intermediate container b7689a62caca
+ ---> d0fab2fb20a9
 Step 17/23 : RUN make -C build-x64 ARCH=x86_64 VENDOR_CERT_FILE=../${CERT_FILE} TOPDIR=.. -f ../Makefile
- ---> Running in 0e00c74aa437
+ ---> Running in 8bfd26c45aad
 make: Entering directory '/build/shim-15.7/build-x64'
 sed	-e "s,@@VERSION@@,15.7," \
 	-e "s,@@UNAME@@,Linux x86_64 unknown unknown GNU/Linux," \
@@ -1394,7 +1388,7 @@ set_dll_characteristics():360: Updating DLL Characteristics from 0x0000 to 0x010
 ms_validation():375: NX-Compat-Flag: PASS
 ms_validation():380:   4K-Alignment: PASS
 ms_validation():394: Section-Wr-Exe: PASS
-fix_checksum():446: Updating checksum from 0x000f0095 to 0x000f0195
+fix_checksum():446: Updating checksum from 0x000ed89b to 0x000ed99b
 objcopy -D -j .text -j .sdata -j .data \
 	-j .dynamic -j .rodata -j .rel* \
 	-j .rela* -j .dyn -j .reloc -j .eh_frame -j .sbat \
@@ -1448,22 +1442,22 @@ ms_validation():380:   4K-Alignment: PASS
 ms_validation():394: Section-Wr-Exe: PASS
 fix_checksum():446: Updating checksum from 0x000257c7 to 0x000258c7
 make: Leaving directory '/build/shim-15.7/build-x64'
-Removing intermediate container 0e00c74aa437
- ---> a18e58628532
+Removing intermediate container 8bfd26c45aad
+ ---> fce2f8dc3f5b
 Step 18/23 : RUN mkdir /build/output
- ---> Running in 1647a9d94e65
-Removing intermediate container 1647a9d94e65
- ---> 1555afb5eaa9
+ ---> Running in 0dddc639641e
+Removing intermediate container 0dddc639641e
+ ---> b1b4ff06da65
 Step 19/23 : RUN cp build-x64/shimx64.efi /build/output
- ---> Running in bd66b468a4ee
-Removing intermediate container bd66b468a4ee
- ---> 9ded71d0f54c
+ ---> Running in ced3e0def2ec
+Removing intermediate container ced3e0def2ec
+ ---> b6716c772cf3
 Step 20/23 : RUN cp ${CERT_FILE} /build/output
- ---> Running in 5948d2054e99
-Removing intermediate container 5948d2054e99
- ---> 5c6cc2f46642
+ ---> Running in 2114e9b1c989
+Removing intermediate container 2114e9b1c989
+ ---> 0ab2103b36a4
 Step 21/23 : RUN objdump -s -j .sbatlevel /build/output/shimx64.efi
- ---> Running in 4284f1d932ac
+ ---> Running in c6980c68f509
 
 /build/output/shimx64.efi:     file format pei-x86-64
 
@@ -1473,10 +1467,10 @@ Contents of section .sbatlevel:
  85020 75622c32 0a007362 61742c31 2c323032  ub,2..sbat,1,202
  85030 32313131 3530300a 7368696d 2c320a67  2111500.shim,2.g
  85040 7275622c 330a00                      rub,3..         
-Removing intermediate container 4284f1d932ac
- ---> 7a7b9a44ace3
+Removing intermediate container c6980c68f509
+ ---> b147cb70f2e0
 Step 22/23 : RUN objdump -j .sbat -s /build/output/shimx64.efi
- ---> Running in cb53632bf0fb
+ ---> Running in c3de9bf8771a
 
 /build/output/shimx64.efi:     file format pei-x86-64
 
@@ -1494,13 +1488,13 @@ Contents of section .sbat:
  d20a0 2c736869 6d2c3135 2e372c6d 61696c3a  ,shim,15.7,mail:
  d20b0 73656375 7265626f 6f744031 307a6967  secureboot@10zig
  d20c0 2e636f6d 0a                          .com.           
-Removing intermediate container cb53632bf0fb
- ---> c37aaa9526eb
+Removing intermediate container c3de9bf8771a
+ ---> 0ddf9aed5ddf
 Step 23/23 : RUN sha256sum /build/output/*
- ---> Running in 47993aa69ab5
-06bdb5ca12ba98e215d4534e08a355d0d3e585047956e3aadfec9c8facad0685  /build/output/10ZiG_SecureBootCA_RootCA.der
-0cf9548aff3b614288db93172bca3efd858d21a7e2540c2900bd830da2122ce2  /build/output/shimx64.efi
-Removing intermediate container 47993aa69ab5
- ---> dab725a53b3d
-Successfully built dab725a53b3d
+ ---> Running in 05d7e2a8334b
+a4b8c08c88bf1efa315907055d083bc4aeda7f40c1e3acdcce50119415ee3ab0  /build/output/10ZiG_SecureBootCA_RootCA.der
+5bf2387d795c896d6b2400b6885e31e978b84897c0330a8082bd2b4d120747fb  /build/output/shimx64.efi
+Removing intermediate container 05d7e2a8334b
+ ---> f1922ef7d006
+Successfully built f1922ef7d006
 Successfully tagged shim:latest
