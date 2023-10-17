@@ -98,7 +98,7 @@ https://github.com/ClaudioGranatiero-10zig/shim-review/blob/main/shim-15.7.tar.b
 *******************************************************************************
 ### If shim is loading GRUB2 bootloader what exact implementation of Secureboot in GRUB2 do you have? (Either Upstream GRUB2 shim_lock verifier or Downstream RHEL/Fedora/Debian/Canonical-like implementation)
 *******************************************************************************
-Downstream RHEL/Fedora/Debian/Canonical-like implementation
+Downstream RHEL/Fedora/Debian/Canonical-like implementation: we use directly the binary from debian package 2.06-13+deb12u1
 
 *******************************************************************************
 ### If shim is loading GRUB2 bootloader and your previously released shim booted a version of grub affected by any of the CVEs in the July 2020 grub2 CVE list, the March 2021 grub2 CVE list, the June 7th 2022 grub2 CVE list, or the November 15th 2022 list, have fixes for all these CVEs been applied?
@@ -130,7 +130,7 @@ Downstream RHEL/Fedora/Debian/Canonical-like implementation
 * CVE-2022-2601
 * CVE-2022-3775
 *******************************************************************************
-Yes, we are using Debian's GRUB 2.06-8 extracted from Debian Bookworm, which fixes all those CVE.
+Yes, we are using Debian's GRUB 2.06-13+deb12u1 extracted from Debian Bookworm, which fixes all those CVE.
 
 *******************************************************************************
 ### If these fixes have been applied, have you set the global SBAT generation on your GRUB binary to 3?
@@ -194,7 +194,7 @@ None, that's our first submission.
 *******************************************************************************
 ### What is the SHA256 hash of your final SHIM binary?
 *******************************************************************************
-0cf9548aff3b614288db93172bca3efd858d21a7e2540c2900bd830da2122ce2
+5bf2387d795c896d6b2400b6885e31e978b84897c0330a8082bd2b4d120747fb
 
 *******************************************************************************
 ### How do you manage and protect the keys used in your SHIM?
@@ -220,7 +220,7 @@ We took the binaries from debian bookworm, no external modules.
 *******************************************************************************
 ### What is the origin and full version number of your bootloader (GRUB or other)?
 *******************************************************************************
-GRUB 2.06-8 from Debian Bookworm
+GRUB 2.06-13+deb12u1 from Debian Bookworm
 *******************************************************************************
 ### If your SHIM launches any other components, please provide further details on what is launched.
 *******************************************************************************
@@ -244,7 +244,7 @@ No.
 *******************************************************************************
 ### What kernel are you using? Which patches does it includes to enforce Secure Boot?
 *******************************************************************************
-linux 5.15.39 with lockdown forced.
+linux 6.3.7 with lockdown forced.
 
 *******************************************************************************
 ### Add any additional information you think we may need to validate this shim.
