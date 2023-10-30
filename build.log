@@ -2,38 +2,31 @@ DEPRECATED: The legacy builder is deprecated and will be removed in a future rel
             Install the buildx component to build images with BuildKit:
             https://docs.docker.com/go/buildx/
 
-Sending build context to Docker daemon  11.15MB
+Sending build context to Docker daemon  11.66MB
 Step 1/23 : FROM debian:bullseye
-bullseye: Pulling from library/debian
-69b3efbf67c2: Pulling fs layer
-69b3efbf67c2: Verifying Checksum
-69b3efbf67c2: Download complete
-69b3efbf67c2: Pull complete
-Digest: sha256:c141beaa9e0767774221cc82efe3a6712a1cc4f75d2699334dfd9a28a6f7357b
-Status: Downloaded newer image for debian:bullseye
  ---> 7fc304c3e97a
 Step 2/23 : ARG CERT_FILE="10ZiG_SecureBootCA_RootCA.der"
- ---> Running in f84595584fe3
-Removing intermediate container f84595584fe3
- ---> 21e5f90adbb4
+ ---> Running in e7972dffb676
+Removing intermediate container e7972dffb676
+ ---> 58bca4ecf205
 Step 3/23 : env DEBIAN_FRONTEND=noninteractive
- ---> Running in f3f68d4197e0
-Removing intermediate container f3f68d4197e0
- ---> a14287124023
+ ---> Running in 057a770d5c39
+Removing intermediate container 057a770d5c39
+ ---> f8383154b0f3
 Step 4/23 : RUN apt-get update -y
- ---> Running in c5f20d786256
+ ---> Running in 0a8da39d092e
 Get:1 http://deb.debian.org/debian bullseye InRelease [116 kB]
 Get:2 http://deb.debian.org/debian-security bullseye-security InRelease [48.4 kB]
 Get:3 http://deb.debian.org/debian bullseye-updates InRelease [44.1 kB]
 Get:4 http://deb.debian.org/debian bullseye/main amd64 Packages [8062 kB]
 Get:5 http://deb.debian.org/debian-security bullseye-security/main amd64 Packages [256 kB]
 Get:6 http://deb.debian.org/debian bullseye-updates/main amd64 Packages [17.4 kB]
-Fetched 8544 kB in 2s (3758 kB/s)
+Fetched 8544 kB in 2s (3693 kB/s)
 Reading package lists...
-Removing intermediate container c5f20d786256
- ---> 87d2220d4d54
+Removing intermediate container 0a8da39d092e
+ ---> 5408515d39ef
 Step 5/23 : RUN apt-get install -y ca-certificates openssl coreutils bash tar xz-utils sed diffutils patch pesign libelf-dev binutils-x86-64-linux-gnu gcc make bzip2 efitools curl wget git
- ---> Running in 91544ef84689
+ ---> Running in 9e88f98ba499
 Reading package lists...
 Building dependency tree...
 Reading state information...
@@ -220,7 +213,7 @@ Get:118 http://deb.debian.org/debian bullseye/main amd64 shared-mime-info amd64 
 Get:119 http://deb.debian.org/debian bullseye/main amd64 xauth amd64 1:1.1-1 [40.5 kB]
 Get:120 http://deb.debian.org/debian bullseye/main amd64 xdg-user-dirs amd64 0.17-2 [53.8 kB]
 [91mdebconf: delaying package configuration, since apt-utils is not installed
-[0mFetched 95.0 MB in 8s (11.6 MB/s)
+[0mFetched 95.0 MB in 8s (11.4 MB/s)
 Selecting previously unselected package perl-modules-5.32.
 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6664 files and directories currently installed.)
 Preparing to unpack .../000-perl-modules-5.32_5.32.1-4+deb11u2_all.deb ...
@@ -715,93 +708,93 @@ Updating certificates in /etc/ssl/certs...
 0 added, 0 removed; done.
 Running hooks in /etc/ca-certificates/update.d...
 done.
-Removing intermediate container 91544ef84689
- ---> 771dfc5ffd59
+Removing intermediate container 9e88f98ba499
+ ---> 16f1b1562e66
 Step 6/23 : WORKDIR /build
- ---> Running in 486fd86596a0
-Removing intermediate container 486fd86596a0
- ---> e4d1e1568d92
+ ---> Running in b149ba98a5e2
+Removing intermediate container b149ba98a5e2
+ ---> ced92938e65a
 Step 7/23 : RUN mkdir -p /build/patches
- ---> Running in 132c96a04a23
-Removing intermediate container 132c96a04a23
- ---> a0d24075ae4d
+ ---> Running in 1016164746fb
+Removing intermediate container 1016164746fb
+ ---> 4de61e677d1f
 Step 8/23 : COPY patches /build/patches
- ---> c46afbd619d7
+ ---> 8f764221efa3
 Step 9/23 : RUN wget --no-check-certificate https://github.com/rhboot/shim/releases/download/15.7/shim-15.7.tar.bz2
- ---> Running in 048278ffc1e7
-[91m--2023-10-30 07:24:24--  https://github.com/rhboot/shim/releases/download/15.7/shim-15.7.tar.bz2
+ ---> Running in b4965d76cd4d
+[91m--2023-10-30 09:12:59--  https://github.com/rhboot/shim/releases/download/15.7/shim-15.7.tar.bz2
 [0m[91mResolving github.com (github.com)... [0m[91m140.82.121.3
 Connecting to github.com (github.com)|140.82.121.3|:443... [0m[91mconnected.
 [0m[91mHTTP request sent, awaiting response... [0m[91m302 Found
-Location: https://objects.githubusercontent.com/github-production-release-asset-2e65be/3996476/c417b0cc-a277-43ea-b275-fe5fe39bf382?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231030%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231030T072424Z&X-Amz-Expires=300&X-Amz-Signature=611c377d1ef7f399ed584bbbcc4329603b94dc0bfebb0d74333b3bf085d0c2aa&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=3996476&response-content-disposition=attachment%3B%20filename%3Dshim-15.7.tar.bz2&response-content-type=application%2Foctet-stream [following]
---2023-10-30 07:24:24--  https://objects.githubusercontent.com/github-production-release-asset-2e65be/3996476/c417b0cc-a277-43ea-b275-fe5fe39bf382?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231030%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231030T072424Z&X-Amz-Expires=300&X-Amz-Signature=611c377d1ef7f399ed584bbbcc4329603b94dc0bfebb0d74333b3bf085d0c2aa&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=3996476&response-content-disposition=attachment%3B%20filename%3Dshim-15.7.tar.bz2&response-content-type=application%2Foctet-stream
-Resolving objects.githubusercontent.com (objects.githubusercontent.com)... [0m[91m185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Location: https://objects.githubusercontent.com/github-production-release-asset-2e65be/3996476/c417b0cc-a277-43ea-b275-fe5fe39bf382?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231030%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231030T091259Z&X-Amz-Expires=300&X-Amz-Signature=2c58948950ac3cde6ac31684bc53c1951252504b737314e8c62a384940f0bb37&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=3996476&response-content-disposition=attachment%3B%20filename%3Dshim-15.7.tar.bz2&response-content-type=application%2Foctet-stream [following]
+[0m[91m--2023-10-30 09:12:59--  https://objects.githubusercontent.com/github-production-release-asset-2e65be/3996476/c417b0cc-a277-43ea-b275-fe5fe39bf382?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20231030%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231030T091259Z&X-Amz-Expires=300&X-Amz-Signature=2c58948950ac3cde6ac31684bc53c1951252504b737314e8c62a384940f0bb37&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=3996476&response-content-disposition=attachment%3B%20filename%3Dshim-15.7.tar.bz2&response-content-type=application%2Foctet-stream
+Resolving objects.githubusercontent.com (objects.githubusercontent.com)... [0m[91m185.199.108.133, 185.199.110.133, 185.199.109.133, ...
 Connecting to objects.githubusercontent.com (objects.githubusercontent.com)|185.199.108.133|:443... [0m[91mconnected.
 [0m[91mHTTP request sent, awaiting response... [0m[91m200 OK
 Length: 1334863 (1.3M) [application/octet-stream]
 [0m[91mSaving to: 'shim-15.7.tar.bz2'
 [0m[91m
-     0K .......... ...[0m[91m.[0m[91m...... .......... ......[0m[91m.... ..........  3% 1.44M 1s
-    50K ..[0m[91m........ ........[0m[91m.. .......... ....[0m[91m...... ..........  7% 1.50M 1s[0m[91m
-   100K .......... ......[0m[91m.... .......... ..[0m[91m........ ...[0m[91m....... 11% 4.82M 1s
-   150K .........[0m[91m. .......... .....[0m[91m..... .......... .[0m[91m......... 15% 2.39M 1s
-   200K .......[0m[91m... .......... ...[0m[91m....... .........[0m[91m. .......... 19% 10.4M 0s
-   250K .....[0m[91m..... .......... .[0m[91m......... .......[0m[91m... .......... 23% 7.72M 0s
-   300K .......... .........[0m[91m. .......... .....[0m[91m..... .......... 26% 12.5M 0s
-   350K .[0m[91m......... .......[0m[91m... .......... ...[0m[91m....... .......... 30% 3.11M 0s
-   400K .......... .....[0m[91m..... .......... .[0m[91m......... .......[0m[91m... 34% 13.7M 0s
-   450K .......... ...[0m[91m....... .........[0m[91m. .......... .....[0m[91m..... 38% 11.4M 0s
-   500K .......... .[0m[91m......... .......[0m[91m... .......... ...[0m[91m....... 42% 11.3M 0s
-   550K .........[0m[91m. .......... .....[0m[91m..... .......... .[0m[91m......... 46% 13.1M 0s
-   600K .......[0m[91m... .......... .......... .........[0m[91m. .......... 49% 1.18M 0s
-   650K .......... .......... .[0m[91m......... .......[0m[91m... .......... 53% 16.1M 0s
-   700K .......... .........[0m[91m. .......... .....[0m[91m..... .......... 57%  107M 0s
-   750K .[0m[91m......... .......... .......... .......... .......... 61% 14.2M 0s
-   800K .......... .......... ...[0m[91m....... .......... .......... 65%  288M 0s
-   850K .......... ...[0m[91m....... .......... .......... ..........[0m[91m 69%  126M 0s
-   900K .......... .[0m[91m......... .......[0m[91m... .....[0m[91m...[0m[91m.. .......... 72% 4.50M 0s
-   950K .......... ..........[0m[91m .......... ......[0m[91m.... .......... 76% 41.8M 0s
-  1000K ..[0m[91m........ .......... .......... ....[0m[91m...... .......... 80% 11.8M 0s[0m[91m
-  1050K .......... .......... .......... ..[0m[91m........ ........[0m[91m.. 84% 10.8M 0s
-  1100K .......... .......... .......... .......... ......[0m[91m.... 88%  210M 0s
-  1150K .......... ..[0m[91m........ ........[0m[91m.. .......... .......... 92% 17.1M 0s
-  1200K ..........[0m[91m .......... ......[0m[91m.... .......... .......... 95% 35.2M 0s
-  1250K ........[0m[91m.. .......... ....[0m[91m...... .......... .......... 99%  190M 0s
+     0K .......... ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m..  3% 1.19M 1s
+    50K .......... ....[0m[91m...... ..........[0m[91m .......... ......[0m[91m....  7% 1.98M 1s
+   100K .......... ..[0m[91m........ ..[0m[91m........ ........[0m[91m.. .......... 11% 5.92M 1s
+   150K ....[0m[91m...... ..........[0m[91m .......... ......[0m[91m.... .......... 15% 7.94M 0s
+   200K ..[0m[91m........ ........[0m[91m.. .......... ....[0m[91m...... .......... 19% 3.06M 0s[0m[91m
+   250K .......... ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. 23% 8.38M 0s
+   300K .......... ....[0m[91m...... ..........[0m[91m .......... .......... 26% 13.1M 0s
+   350K .......... ..[0m[91m........ ..[0m[91m........ ........[0m[91m.. .......... 30% 12.1M 0s
+   400K ....[0m[91m...... ..........[0m[91m .......... ......[0m[91m.... .......... 34% 10.7M 0s
+   450K ..[0m[91m........ ........[0m[91m.. .......... ....[0m[91m...... .......... 38% 12.4M 0s[0m[91m
+   500K .......... ......[0m[91m.... .......... ..[0m[91m........ .......... 42% 3.97M 0s
+   550K ......[0m[91m.... ....[0m[91m...... ..........[0m[91m .......... ......[0m[91m.... 46% 10.5M 0s
+   600K .......... ..[0m[91m........ ........[0m[91m.. .......... ....[0m[91m...... 49% 14.5M 0s
+   650K ..........[0m[91m .......... ......[0m[91m.... .......... ..[0m[91m........ 53% 1.31M 0s
+   700K .......... .......... ....[0m[91m...... .......... .......... 57% 28.3M 0s
+   750K ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. .......... 61% 13.9M 0s
+   800K ....[0m[91m...... ..........[0m[91m .......... .......... .......... 65% 13.4M 0s
+   850K .......... .......... .......... ....[0m[91m...... .......... 69%  260M 0s
+   900K .......... ......[0m[91m.... .......... ..[0m[91m........ ........[0m[91m.. 72% 15.7M 0s
+   950K .......... ....[0m[91m...... ..........[0m[91m .......... .......... 76% 13.2M 0s
+  1000K .......... .......... ........[0m[91m.. .......... .......... 80%  234M 0s
+  1050K ..[0m[91m........ .......... .......... .......... ..[0m[91m........ 84%  291M 0s
+  1100K ........[0m[91m.. .......... .......... ..........[0m[91m ........[0m[91m.. 88%  161M 0s
+  1150K ......[0m[91m.... .......... ..[0m[91m........ .......... .......... 92% 5.46M 0s
+  1200K ....[0m[91m...... .......... .......... ......[0m[91m.... .......... 95% 13.3M 0s
+  1250K .......... ....[0m[91m...... ..........[0m[91m .......... .......... 99% 23.8M 0s
   1300K ...                                                   100% 6.66T=0.2s
 
-[0m[91m2023-10-30 07:24:25 (5.84 MB/s) - 'shim-15.7.tar.bz2' saved [1334863/1334863]
+[0m[91m2023-10-30 09:13:00 (6.15 MB/s) - 'shim-15.7.tar.bz2' saved [1334863/1334863]
 
-[0mRemoving intermediate container 048278ffc1e7
- ---> 95afd22a7e56
+[0mRemoving intermediate container b4965d76cd4d
+ ---> a20dd7f6f6ba
 Step 10/23 : RUN tar jxf shim-15.7.tar.bz2
- ---> Running in c345c254e362
-Removing intermediate container c345c254e362
- ---> ab8300fb3105
+ ---> Running in 1c5cc866bd62
+Removing intermediate container 1c5cc866bd62
+ ---> f9113552beba
 Step 11/23 : WORKDIR /build/shim-15.7
- ---> Running in da1f5c68227b
-Removing intermediate container da1f5c68227b
- ---> fe38463c72a1
+ ---> Running in d6cceb6721a1
+Removing intermediate container d6cceb6721a1
+ ---> cf2b72486beb
 Step 12/23 : RUN git apply /build/patches/*.patch
- ---> Running in d857a26597eb
-Removing intermediate container d857a26597eb
- ---> a1876dc30aae
+ ---> Running in 5be091e04718
+Removing intermediate container 5be091e04718
+ ---> 6ce41d19bf63
 Step 13/23 : ADD ${CERT_FILE} .
- ---> f3cd79521799
+ ---> b4e96925f5cc
 Step 14/23 : ADD shimx64_10ZiG.sbat .
- ---> 2d3d6375857f
+ ---> 380a72606238
 Step 15/23 : RUN cat shimx64_10ZiG.sbat >> data/sbat.csv && cat data/sbat.csv
- ---> Running in 2455fef7e7c0
+ ---> Running in 24b7524dea87
 sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
 shim,3,UEFI shim,shim,1,https://github.com/rhboot/shim
 shim.10zig,1,10ZiG Technology,shim,15.7,mail:secureboot@10zig.com
-Removing intermediate container 2455fef7e7c0
- ---> f3d4297133d7
+Removing intermediate container 24b7524dea87
+ ---> 64487ef12e0f
 Step 16/23 : RUN mkdir build-x64
- ---> Running in 5c578e5ec44c
-Removing intermediate container 5c578e5ec44c
- ---> 8be82c5b5baf
+ ---> Running in 34a99fe30938
+Removing intermediate container 34a99fe30938
+ ---> fbd63022fa72
 Step 17/23 : RUN make -C build-x64 ARCH=x86_64 VENDOR_CERT_FILE=../${CERT_FILE} TOPDIR=.. -f ../Makefile
- ---> Running in c7d48c8d17c5
+ ---> Running in 1fc85c3e20de
 make: Entering directory '/build/shim-15.7/build-x64'
 sed	-e "s,@@VERSION@@,15.7," \
 	-e "s,@@UNAME@@,Linux x86_64 unknown unknown GNU/Linux," \
@@ -1388,7 +1381,7 @@ set_dll_characteristics():360: Updating DLL Characteristics from 0x0000 to 0x010
 ms_validation():375: NX-Compat-Flag: PASS
 ms_validation():380:   4K-Alignment: PASS
 ms_validation():394: Section-Wr-Exe: PASS
-fix_checksum():446: Updating checksum from 0x000f22f9 to 0x000f23f9
+fix_checksum():446: Updating checksum from 0x000ec14c to 0x000ec24c
 objcopy -D -j .text -j .sdata -j .data \
 	-j .dynamic -j .rodata -j .rel* \
 	-j .rela* -j .dyn -j .reloc -j .eh_frame -j .sbat \
@@ -1442,22 +1435,22 @@ ms_validation():380:   4K-Alignment: PASS
 ms_validation():394: Section-Wr-Exe: PASS
 fix_checksum():446: Updating checksum from 0x000257c7 to 0x000258c7
 make: Leaving directory '/build/shim-15.7/build-x64'
-Removing intermediate container c7d48c8d17c5
- ---> 71937bb14d5c
+Removing intermediate container 1fc85c3e20de
+ ---> ecf7bd038412
 Step 18/23 : RUN mkdir /build/output
- ---> Running in 2b1c1e7db007
-Removing intermediate container 2b1c1e7db007
- ---> 1b73a131416d
+ ---> Running in d519b235cbb6
+Removing intermediate container d519b235cbb6
+ ---> 10269cc10be2
 Step 19/23 : RUN cp build-x64/shimx64.efi /build/output
- ---> Running in 28af97d0f094
-Removing intermediate container 28af97d0f094
- ---> af69a72c885e
+ ---> Running in 5975f7e914a0
+Removing intermediate container 5975f7e914a0
+ ---> 3296fc4789e2
 Step 20/23 : RUN cp ${CERT_FILE} /build/output
- ---> Running in e5e457c1f0b4
-Removing intermediate container e5e457c1f0b4
- ---> 8ac8ca757210
+ ---> Running in a59047baf05c
+Removing intermediate container a59047baf05c
+ ---> b8fdd0861071
 Step 21/23 : RUN objdump -s -j .sbatlevel /build/output/shimx64.efi
- ---> Running in ec2836e21f10
+ ---> Running in ede53efa16d4
 
 /build/output/shimx64.efi:     file format pei-x86-64
 
@@ -1467,10 +1460,10 @@ Contents of section .sbatlevel:
  85020 75622c32 0a007362 61742c31 2c323032  ub,2..sbat,1,202
  85030 32313131 3530300a 7368696d 2c320a67  2111500.shim,2.g
  85040 7275622c 330a00                      rub,3..         
-Removing intermediate container ec2836e21f10
- ---> 17bdd2f07784
+Removing intermediate container ede53efa16d4
+ ---> 10dac1360e3c
 Step 22/23 : RUN objdump -j .sbat -s /build/output/shimx64.efi
- ---> Running in 5fcc7f3bdac4
+ ---> Running in ea3a4b26d144
 
 /build/output/shimx64.efi:     file format pei-x86-64
 
@@ -1488,13 +1481,13 @@ Contents of section .sbat:
  d20a0 2c736869 6d2c3135 2e372c6d 61696c3a  ,shim,15.7,mail:
  d20b0 73656375 7265626f 6f744031 307a6967  secureboot@10zig
  d20c0 2e636f6d 0a                          .com.           
-Removing intermediate container 5fcc7f3bdac4
- ---> 8e4df8664d6b
+Removing intermediate container ea3a4b26d144
+ ---> e876ebed73fe
 Step 23/23 : RUN sha256sum /build/output/*
- ---> Running in 20b8f4b08ecc
-e314b89d5099605e1aa1b732490ea2827bf666f2bf3a6116a4d3b8934a2c672e  /build/output/10ZiG_SecureBootCA_RootCA.der
-9152d4178fe380e602efeebed4824a8ff2f2e8b1a0b0229cbbadf04ac2a87db4  /build/output/shimx64.efi
-Removing intermediate container 20b8f4b08ecc
- ---> a66858ca7d18
-Successfully built a66858ca7d18
+ ---> Running in 634d78c9a4c4
+f3b011f61ee3c513068bcbc247f45ee930b377a9a1864fc96900c479beb8626b  /build/output/10ZiG_SecureBootCA_RootCA.der
+102a7ba88a13c3bc88cd6d4c30e39d78946c62776779bc228a5d309edb4a84d8  /build/output/shimx64.efi
+Removing intermediate container 634d78c9a4c4
+ ---> 1813d3a6a183
+Successfully built 1813d3a6a183
 Successfully tagged shim:latest
