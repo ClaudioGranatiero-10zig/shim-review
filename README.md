@@ -159,9 +159,10 @@ Yes
 *******************************************************************************
 Yes, we have:
 - support for a specific type of EMMC present in our hardware
-- 10ZiG Boot Logo
 - lockdown: also lock down previous kgdb use (eadb2f47a3ced5c64b23b90fd2a3463f63726066)
 - force NX_COMPAT (changed DllCharacteristcs from 0 to IMAGE_DLL_CHARACTERISTICS_NX_COMPAT in arch/x86/boot/header.S)
+
+Our full linux kernel repo is here: https://github.com/10ZiG-Technology/linux
 
 *******************************************************************************
 ### Do you use an ephemeral key for signing kernel modules?
