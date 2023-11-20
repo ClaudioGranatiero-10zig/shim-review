@@ -136,9 +136,26 @@ Downstream RHEL/Fedora/Debian/Canonical-like implementation: we use directly the
 Yes, we are using Debian's GRUB 2.06-13+deb12u1 extracted from Debian Bookworm, which fixes all those CVE.
 
 *******************************************************************************
-### If these fixes have been applied, have you set the global SBAT generation on your GRUB binary to 3?
+### If these fixes have been applied, is the upstream global SBAT generation in your GRUB2 binary set to 4?
+The entry should look similar to: `grub,4,Free Software Foundation,grub,GRUB_UPSTREAM_VERSION,https://www.gnu.org/software/grub/`
 *******************************************************************************
-Yes
+Yes: 
+3ff000 73626174 2c312c53 42415420 56657273  sbat,1,SBAT Vers
+ 3ff010 696f6e2c 73626174 2c312c68 74747073  ion,sbat,1,https
+ 3ff020 3a2f2f67 69746875 622e636f 6d2f7268  ://github.com/rh
+ 3ff030 626f6f74 2f736869 6d2f626c 6f622f6d  boot/shim/blob/m
+ 3ff040 61696e2f 53424154 2e6d640a 67727562  ain/SBAT.md.grub
+ 3ff050 2c342c46 72656520 536f6674 77617265  ,4,Free Software
+ 3ff060 20466f75 6e646174 696f6e2c 67727562   Foundation,grub
+ 3ff070 2c322e30 362c6874 7470733a 2f2f7777  ,2.06,https://ww
+ 3ff080 772e676e 752e6f72 672f736f 66747761  w.gnu.org/softwa
+ 3ff090 72652f67 7275622f 0a677275 622e6465  re/grub/.grub.de
+ 3ff0a0 6269616e 2c342c44 65626961 6e2c6772  bian,4,Debian,gr
+ 3ff0b0 7562322c 322e3036 2d31332b 64656231  ub2,2.06-13+deb1
+ 3ff0c0 3275312c 68747470 733a2f2f 74726163  2u1,https://trac
+ 3ff0d0 6b65722e 64656269 616e2e6f 72672f70  ker.debian.org/p
+ 3ff0e0 6b672f67 72756232 0a000000 00000000  kg/grub2........
+
 
 *******************************************************************************
 ### Were old shims hashes provided to Microsoft for verification and to be added to future DBX updates?
@@ -216,19 +233,66 @@ The key is stored on a FIPS-140-2 USB token (YubiKey), connected to the build ma
 No.
 
 *******************************************************************************
-### Do you add a vendor-specific SBAT entry to the SBAT section in each binary that supports SBAT metadata ( grub2, fwupd, fwupdate, shim + all child shim binaries )?
+### Do you add a vendor-specific SBAT entry to the SBAT section in each binary that supports SBAT metadata ( GRUB2, fwupd, fwupdate, shim + all child shim binaries )?
 ### Please provide exact SBAT entries for all SBAT binaries you are booting or planning to boot directly through shim.
 ### Where your code is only slightly modified from an upstream vendor's, please also preserve their SBAT entries to simplify revocation.
+If you are using a downstream implementation of GRUB2 (e.g. from Fedora or Debian), please
+preserve the SBAT entry from those distributions and only append your own.
+More information on how SBAT works can be found [here](https://github.com/rhboot/shim/blob/main/SBAT.md).
 *******************************************************************************
+SHIM: 
 shim.10zig,1,10ZiG Technology,shim,15.7,mail:secureboot@10zig.com
 
+bjdump -j .sbat -s shimx64.efi 
+
+shimx64.efi:     file format pei-x86-64
+
+Contents of section .sbat:
+ d2000 73626174 2c312c53 42415420 56657273  sbat,1,SBAT Vers
+ d2010 696f6e2c 73626174 2c312c68 74747073  ion,sbat,1,https
+ d2020 3a2f2f67 69746875 622e636f 6d2f7268  ://github.com/rh
+ d2030 626f6f74 2f736869 6d2f626c 6f622f6d  boot/shim/blob/m
+ d2040 61696e2f 53424154 2e6d640a 7368696d  ain/SBAT.md.shim
+ d2050 2c332c55 45464920 7368696d 2c736869  ,3,UEFI shim,shi
+ d2060 6d2c312c 68747470 733a2f2f 67697468  m,1,https://gith
+ d2070 75622e63 6f6d2f72 68626f6f 742f7368  ub.com/rhboot/sh
+ d2080 696d0a73 68696d2e 31307a69 672c312c  im.shim.10zig,1,
+ d2090 31305a69 47205465 63686e6f 6c6f6779  10ZiG Technology
+ d20a0 2c736869 6d2c3135 2e372c6d 61696c3a  ,shim,15.7,mail:
+ d20b0 73656375 7265626f 6f744031 307a6967  secureboot@10zig
+ d20c0 2e636f6d 0a                          .com.           
+
+
+GRUB2:
+
+objdump -j .sbat -s grubx64.efi |head -n 20
+
+grubx64.efi:     file format pei-x86-64
+
+Contents of section .sbat:
+ 3ff000 73626174 2c312c53 42415420 56657273  sbat,1,SBAT Vers
+ 3ff010 696f6e2c 73626174 2c312c68 74747073  ion,sbat,1,https
+ 3ff020 3a2f2f67 69746875 622e636f 6d2f7268  ://github.com/rh
+ 3ff030 626f6f74 2f736869 6d2f626c 6f622f6d  boot/shim/blob/m
+ 3ff040 61696e2f 53424154 2e6d640a 67727562  ain/SBAT.md.grub
+ 3ff050 2c342c46 72656520 536f6674 77617265  ,4,Free Software
+ 3ff060 20466f75 6e646174 696f6e2c 67727562   Foundation,grub
+ 3ff070 2c322e30 362c6874 7470733a 2f2f7777  ,2.06,https://ww
+ 3ff080 772e676e 752e6f72 672f736f 66747761  w.gnu.org/softwa
+ 3ff090 72652f67 7275622f 0a677275 622e6465  re/grub/.grub.de
+ 3ff0a0 6269616e 2c342c44 65626961 6e2c6772  bian,4,Debian,gr
+ 3ff0b0 7562322c 322e3036 2d31332b 64656231  ub2,2.06-13+deb1
+ 3ff0c0 3275312c 68747470 733a2f2f 74726163  2u1,https://trac
+ 3ff0d0 6b65722e 64656269 616e2e6f 72672f70  ker.debian.org/p
+ 3ff0e0 6b672f67 72756232 0a000000 00000000  kg/grub2........
+
 *******************************************************************************
-### Which modules are built into your signed grub image?
+### Which modules are built into your signed GRUB2 image?
 *******************************************************************************
 We took the binaries from debian bookworm, no external modules.
 
 *******************************************************************************
-### What is the origin and full version number of your bootloader (GRUB or other)?
+### What is the origin and full version number of your bootloader (GRUB2 or other)?
 *******************************************************************************
 GRUB 2.06-13+deb12u1 from Debian Bookworm
 *******************************************************************************
@@ -247,7 +311,7 @@ GRUB will launch only linux kernel, no other components.
 shim verifies signature of GRUB, GRUB verifies signature of kernel, kernel is compiled with LOCK_DOWN_KERNEL_FORCE_INTEGRITY, all kernel modules are signed.
 
 *******************************************************************************
-### Does your SHIM load any loaders that support loading unsigned kernels (e.g. GRUB)?
+### Does your SHIM load any loaders that support loading unsigned kernels (e.g. GRUB2)?
 *******************************************************************************
 No.
 
