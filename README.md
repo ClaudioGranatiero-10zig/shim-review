@@ -71,8 +71,7 @@ well known in the Linux community.)
 - Name: Kevin Greenway
 - Position: Chief Technology Officer
 - Email address: keving@10zig.com
-- PGP key fingerprint: 95F5 4629 840E 3526 DCD0  68D4 5089 0A18 6CB4 EA18
-
+- PGP key fingerprint: 1D7E 0F09 AF6C 117F 9914  BFF3 4AFD D3B9 069C D9C2
 (Key should be signed by the other security contacts, pushed to a keyserver
 like keyserver.ubuntu.com, and preferably have signatures that are reasonably
 well known in the Linux community.)
