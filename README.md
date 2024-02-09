@@ -155,6 +155,7 @@ Yes, we are using Debian's GRUB 2.12-1 extracted from Debian Trixie, which fixes
 The entry should look similar to: `grub,4,Free Software Foundation,grub,GRUB_UPSTREAM_VERSION,https://www.gnu.org/software/grub/`
 *******************************************************************************
 Yes: 
+```
  28a000 73626174 2c312c53 42415420 56657273  sbat,1,SBAT Vers
  28a010 696f6e2c 73626174 2c312c68 74747073  ion,sbat,1,https
  28a020 3a2f2f67 69746875 622e636f 6d2f7268  ://github.com/rh
@@ -171,6 +172,7 @@ Yes:
  28a0d0 6e2e6f72 672f706b 672f6772 7562320a  n.org/pkg/grub2.
  28a0e0 67727562 2e646562 69616e31 332c312c  grub.debian13,1,
  28a0f0 44656269 616e2c67 72756232 2c322e31  Debian,grub2,2.1
+```
 
 *******************************************************************************
 ### Were old shims hashes provided to Microsoft for verification and to be added to future DBX updates?
@@ -258,6 +260,7 @@ and only append your own. More information on how SBAT works can be found
 [here](https://github.com/rhboot/shim/blob/main/SBAT.md).
 *******************************************************************************
 SHIM: 
+```
 shim.10zig,1,10ZiG Technology,shim,15.8,mail:secureboot@10zig.com
 
 bjdump -j .sbat -s shimx64.efi 
@@ -289,10 +292,10 @@ Contents of section .sbatlevel:
  86040 312c3230 32343031 30393030 0a736869  1,2024010900.shi
  86050 6d2c340a 67727562 2c330a67 7275622e  m,4.grub,3.grub.
  86060 64656269 616e2c34 0a00               debian,4..      
-
+```
 
 GRUB2:
-
+```
 objdump -j .sbat -s grubx64.efi |head -n 20
 
 grubx64.efi:     file format pei-x86-64
@@ -314,7 +317,7 @@ Contents of section .sbat:
  28a0d0 6e2e6f72 672f706b 672f6772 7562320a  n.org/pkg/grub2.
  28a0e0 67727562 2e646562 69616e31 332c312c  grub.debian13,1,
  28a0f0 44656269 616e2c67 72756232 2c322e31  Debian,grub2,2.1
-
+```
 
 *******************************************************************************
 ### If shim is loading GRUB2 bootloader, which modules are built into your signed GRUB2 image?
