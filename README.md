@@ -11,8 +11,8 @@ This repo is for review of requests for signing shim.  To create a request for r
 - file an issue at https://github.com/rhboot/shim-review/issues with a link to your tag
 - approval is ready when the "accepted" label is added to your issue
 
-Note that we really only have experience with using GRUB2 on Linux, so asking
-us to endorse anything else for signing is going to require some convincing on
+Note that we really only have experience with using GRUB2 or systemd-boot on Linux, so
+asking us to endorse anything else for signing is going to require some convincing on
 your part.
 
 Check the docs directory in this repo for guidance on submission and
@@ -77,10 +77,10 @@ like keyserver.ubuntu.com, and preferably have signatures that are reasonably
 well known in the Linux community.)
 
 *******************************************************************************
-### Were these binaries created from the 15.7 shim release tar?
-Please create your shim binaries starting with the 15.7 shim release tar file: https://github.com/rhboot/shim/releases/download/15.7/shim-15.7.tar.bz2
+### Were these binaries created from the 15.8 shim release tar?
+Please create your shim binaries starting with the 15.8 shim release tar file: https://github.com/rhboot/shim/releases/download/15.8/shim-15.8.tar.bz2
 
-This matches https://github.com/rhboot/shim/releases/tag/15.7 and contains the appropriate gnu-efi source.
+This matches https://github.com/rhboot/shim/releases/tag/15.8 and contains the appropriate gnu-efi source.
 
 *******************************************************************************
 Yes.
@@ -88,79 +88,95 @@ Yes.
 *******************************************************************************
 ### URL for a repo that contains the exact code which was built to get this binary:
 *******************************************************************************
-https://github.com/ClaudioGranatiero-10zig/shim-review/blob/main/shim-15.7.tar.bz2
+https://github.com/ClaudioGranatiero-10zig/shim-review/blob/main/shim-15.8.tar.bz2
 
 *******************************************************************************
 ### What patches are being applied and why:
 *******************************************************************************
-- Make sbat_var.S parse right with buggy gcc/binutils #535
-- Add validation function for Microsoft signing #531
-- Enable the NX compatibility flag by default. #530
+No patches applied.
+*******************************************************************************
+### Do you have the NX bit set in your shim? If so, is your entire boot stack NX-compatible and what testing have you done to ensure such compatibility?
+
+See https://techcommunity.microsoft.com/t5/hardware-dev-center/nx-exception-for-shim-community/ba-p/3976522 for more details on the signing of shim without NX bit.
+*******************************************************************************
+No, we don't set the NX bit.
 
 *******************************************************************************
 ### If shim is loading GRUB2 bootloader what exact implementation of Secureboot in GRUB2 do you have? (Either Upstream GRUB2 shim_lock verifier or Downstream RHEL/Fedora/Debian/Canonical-like implementation)
 *******************************************************************************
-Downstream RHEL/Fedora/Debian/Canonical-like implementation: we use directly the binary from debian package 2.06-13+deb12u1
+Downstream RHEL/Fedora/Debian/Canonical-like implementation: we use directly the binary from debian package 2.12-1
 
 *******************************************************************************
-### If shim is loading GRUB2 bootloader and your previously released shim booted a version of grub affected by any of the CVEs in the July 2020 grub2 CVE list, the March 2021 grub2 CVE list, the June 7th 2022 grub2 CVE list, or the November 15th 2022 list, have fixes for all these CVEs been applied?
+### If shim is loading GRUB2 bootloader and your previously released shim booted a version of GRUB2 affected by any of the CVEs in the July 2020, the March 2021, the June 7th 2022, the November 15th 2022, or 3rd of October 2023 GRUB2 CVE list, have fixes for all these CVEs been applied?
 
-* CVE-2020-14372
-* CVE-2020-25632
-* CVE-2020-25647
-* CVE-2020-27749
-* CVE-2020-27779
-* CVE-2021-20225
-* CVE-2021-20233
-* CVE-2020-10713
-* CVE-2020-14308
-* CVE-2020-14309
-* CVE-2020-14310
-* CVE-2020-14311
-* CVE-2020-15705
-* CVE-2021-3418 (if you are shipping the shim_lock module)
-
-* CVE-2021-3695
-* CVE-2021-3696
-* CVE-2021-3697
-* CVE-2022-28733
-* CVE-2022-28734
-* CVE-2022-28735
-* CVE-2022-28736
-* CVE-2022-28737
-
-* CVE-2022-2601
-* CVE-2022-3775
+* 2020 July - BootHole
+  * Details: https://lists.gnu.org/archive/html/grub-devel/2020-07/msg00034.html
+  * CVE-2020-10713
+  * CVE-2020-14308
+  * CVE-2020-14309
+  * CVE-2020-14310
+  * CVE-2020-14311
+  * CVE-2020-15705
+  * CVE-2020-15706
+  * CVE-2020-15707
+* March 2021
+  * Details: https://lists.gnu.org/archive/html/grub-devel/2021-03/msg00007.html
+  * CVE-2020-14372
+  * CVE-2020-25632
+  * CVE-2020-25647
+  * CVE-2020-27749
+  * CVE-2020-27779
+  * CVE-2021-3418 (if you are shipping the shim_lock module)
+  * CVE-2021-20225
+  * CVE-2021-20233
+* June 2022
+  * Details: https://lists.gnu.org/archive/html/grub-devel/2022-06/msg00035.html, SBAT increase to 2
+  * CVE-2021-3695
+  * CVE-2021-3696
+  * CVE-2021-3697
+  * CVE-2022-28733
+  * CVE-2022-28734
+  * CVE-2022-28735
+  * CVE-2022-28736
+  * CVE-2022-28737
+* November 2022
+  * Details: https://lists.gnu.org/archive/html/grub-devel/2022-11/msg00059.html, SBAT increase to 3
+  * CVE-2022-2601
+  * CVE-2022-3775
+* October 2023 - NTFS vulnerabilities
+  * Details: https://lists.gnu.org/archive/html/grub-devel/2023-10/msg00028.html, SBAT increase to 4
+  * CVE-2023-4693
+  * CVE-2023-4692
 *******************************************************************************
-Yes, we are using Debian's GRUB 2.06-13+deb12u1 extracted from Debian Bookworm, which fixes all those CVE.
+Yes, we are using Debian's GRUB 2.12-1 extracted from Debian Trixie, which fixes all those CVE.
 
 *******************************************************************************
-### If these fixes have been applied, is the upstream global SBAT generation in your GRUB2 binary set to 4?
+### If shim is loading GRUB2 bootloader, and if these fixes have been applied, is the upstream global SBAT generation in your GRUB2 binary set to 4?
 The entry should look similar to: `grub,4,Free Software Foundation,grub,GRUB_UPSTREAM_VERSION,https://www.gnu.org/software/grub/`
 *******************************************************************************
 Yes: 
-3ff000 73626174 2c312c53 42415420 56657273  sbat,1,SBAT Vers
- 3ff010 696f6e2c 73626174 2c312c68 74747073  ion,sbat,1,https
- 3ff020 3a2f2f67 69746875 622e636f 6d2f7268  ://github.com/rh
- 3ff030 626f6f74 2f736869 6d2f626c 6f622f6d  boot/shim/blob/m
- 3ff040 61696e2f 53424154 2e6d640a 67727562  ain/SBAT.md.grub
- 3ff050 2c342c46 72656520 536f6674 77617265  ,4,Free Software
- 3ff060 20466f75 6e646174 696f6e2c 67727562   Foundation,grub
- 3ff070 2c322e30 362c6874 7470733a 2f2f7777  ,2.06,https://ww
- 3ff080 772e676e 752e6f72 672f736f 66747761  w.gnu.org/softwa
- 3ff090 72652f67 7275622f 0a677275 622e6465  re/grub/.grub.de
- 3ff0a0 6269616e 2c342c44 65626961 6e2c6772  bian,4,Debian,gr
- 3ff0b0 7562322c 322e3036 2d31332b 64656231  ub2,2.06-13+deb1
- 3ff0c0 3275312c 68747470 733a2f2f 74726163  2u1,https://trac
- 3ff0d0 6b65722e 64656269 616e2e6f 72672f70  ker.debian.org/p
- 3ff0e0 6b672f67 72756232 0a000000 00000000  kg/grub2........
-
+ 28a000 73626174 2c312c53 42415420 56657273  sbat,1,SBAT Vers
+ 28a010 696f6e2c 73626174 2c312c68 74747073  ion,sbat,1,https
+ 28a020 3a2f2f67 69746875 622e636f 6d2f7268  ://github.com/rh
+ 28a030 626f6f74 2f736869 6d2f626c 6f622f6d  boot/shim/blob/m
+ 28a040 61696e2f 53424154 2e6d640a 67727562  ain/SBAT.md.grub
+ 28a050 2c342c46 72656520 536f6674 77617265  ,4,Free Software
+ 28a060 20466f75 6e646174 696f6e2c 67727562   Foundation,grub
+ 28a070 2c322e31 322c6874 7470733a 2f2f7777  ,2.12,https://ww
+ 28a080 772e676e 752e6f72 672f736f 66747761  w.gnu.org/softwa
+ 28a090 72652f67 7275622f 0a677275 622e6465  re/grub/.grub.de
+ 28a0a0 6269616e 2c342c44 65626961 6e2c6772  bian,4,Debian,gr
+ 28a0b0 7562322c 322e3132 2d312c68 74747073  ub2,2.12-1,https
+ 28a0c0 3a2f2f74 7261636b 65722e64 65626961  ://tracker.debia
+ 28a0d0 6e2e6f72 672f706b 672f6772 7562320a  n.org/pkg/grub2.
+ 28a0e0 67727562 2e646562 69616e31 332c312c  grub.debian13,1,
+ 28a0f0 44656269 616e2c67 72756232 2c322e31  Debian,grub2,2.1
 
 *******************************************************************************
 ### Were old shims hashes provided to Microsoft for verification and to be added to future DBX updates?
 ### Does your new chain of trust disallow booting old GRUB2 builds affected by the CVEs?
 *******************************************************************************
-This is our first shim submission.
+Previous SHIM 15.7 submission was accepted by review team, but is not signed by Microsoft. We decided to update submission to SHIM version 15.8.
 
 *******************************************************************************
 ### If your boot chain of trust includes a Linux kernel:
@@ -196,7 +212,7 @@ We don't use the vendor_db functionality.
 ### If you are re-using a previously used (CA) certificate, you will need to add the hashes of the previous GRUB2 binaries exposed to the CVEs to vendor_dbx in shim in order to prevent GRUB2 from being able to chainload those older GRUB2 binaries. If you are changing to a new (CA) certificate, this does not apply.
 ### Please describe your strategy.
 *******************************************************************************
-This is our first shim submission, so we have no previously used certificate.
+Our previous submission to shim-review was accepted, but we didn't have the time to submit to Microsoft for signature, so the certificate is not changed but was never used in production.
 
 *******************************************************************************
 ### What OS and toolchain must we use to reproduce this build?  Include where to find it, etc.  We're going to try to reproduce your build as closely as possible to verify that it's really a build of the source tree you tell us it is, so these need to be fairly thorough. At the very least include the specific versions of gcc, binutils, and gnu-efi which were used, and where to find those binaries.
@@ -213,14 +229,15 @@ This should include logs for creating the buildroots, applying patches, doing th
 It was produced with command: docker build --no-cache --tag=shim . &>  build.log
 
 *******************************************************************************
-### What changes were made since your SHIM was last signed?
+### What changes were made in the distor's secure boot chain since your SHIM was last signed?
+For example, signing new kernel's variants, UKI, systemd-boot, new certs, new CA, etc..
 *******************************************************************************
-None, that's our first submission.
+None other than updating to shim 15.8, our previous shim submitted (approved) was not signed by Microsoft.
 
 *******************************************************************************
 ### What is the SHA256 hash of your final SHIM binary?
 *******************************************************************************
-102a7ba88a13c3bc88cd6d4c30e39d78946c62776779bc228a5d309edb4a84d8
+881bb700c81264565df689f9749f16b02342a82d0f74a4629c63f9b611102e1c  shimx64.efi
 
 *******************************************************************************
 ### How do you manage and protect the keys used in your SHIM?
@@ -232,34 +249,46 @@ The key is stored on a FIPS-140-2 USB token (YubiKey), connected to the build ma
 No.
 
 *******************************************************************************
-### Do you add a vendor-specific SBAT entry to the SBAT section in each binary that supports SBAT metadata ( GRUB2, fwupd, fwupdate, shim + all child shim binaries )?
+### Do you add a vendor-specific SBAT entry to the SBAT section in each binary that supports SBAT metadata ( GRUB2, fwupd, fwupdate, systemd-boot, systemd-stub, shim + all child shim binaries )?
 ### Please provide exact SBAT entries for all SBAT binaries you are booting or planning to boot directly through shim.
 ### Where your code is only slightly modified from an upstream vendor's, please also preserve their SBAT entries to simplify revocation.
-If you are using a downstream implementation of GRUB2 (e.g. from Fedora or Debian), please
-preserve the SBAT entry from those distributions and only append your own.
-More information on how SBAT works can be found [here](https://github.com/rhboot/shim/blob/main/SBAT.md).
+If you are using a downstream implementation of GRUB2 or systemd-boot (e.g.
+from Fedora or Debian), please preserve the SBAT entry from those distributions
+and only append your own. More information on how SBAT works can be found
+[here](https://github.com/rhboot/shim/blob/main/SBAT.md).
 *******************************************************************************
 SHIM: 
-shim.10zig,1,10ZiG Technology,shim,15.7,mail:secureboot@10zig.com
+shim.10zig,1,10ZiG Technology,shim,15.8,mail:secureboot@10zig.com
 
 bjdump -j .sbat -s shimx64.efi 
 
 shimx64.efi:     file format pei-x86-64
 
 Contents of section .sbat:
- d2000 73626174 2c312c53 42415420 56657273  sbat,1,SBAT Vers
- d2010 696f6e2c 73626174 2c312c68 74747073  ion,sbat,1,https
- d2020 3a2f2f67 69746875 622e636f 6d2f7268  ://github.com/rh
- d2030 626f6f74 2f736869 6d2f626c 6f622f6d  boot/shim/blob/m
- d2040 61696e2f 53424154 2e6d640a 7368696d  ain/SBAT.md.shim
- d2050 2c332c55 45464920 7368696d 2c736869  ,3,UEFI shim,shi
- d2060 6d2c312c 68747470 733a2f2f 67697468  m,1,https://gith
- d2070 75622e63 6f6d2f72 68626f6f 742f7368  ub.com/rhboot/sh
- d2080 696d0a73 68696d2e 31307a69 672c312c  im.shim.10zig,1,
- d2090 31305a69 47205465 63686e6f 6c6f6779  10ZiG Technology
- d20a0 2c736869 6d2c3135 2e372c6d 61696c3a  ,shim,15.7,mail:
- d20b0 73656375 7265626f 6f744031 307a6967  secureboot@10zig
- d20c0 2e636f6d 0a                          .com.           
+ d4000 73626174 2c312c53 42415420 56657273  sbat,1,SBAT Vers
+ d4010 696f6e2c 73626174 2c312c68 74747073  ion,sbat,1,https
+ d4020 3a2f2f67 69746875 622e636f 6d2f7268  ://github.com/rh
+ d4030 626f6f74 2f736869 6d2f626c 6f622f6d  boot/shim/blob/m
+ d4040 61696e2f 53424154 2e6d640a 7368696d  ain/SBAT.md.shim
+ d4050 2c342c55 45464920 7368696d 2c736869  ,4,UEFI shim,shi
+ d4060 6d2c312c 68747470 733a2f2f 67697468  m,1,https://gith
+ d4070 75622e63 6f6d2f72 68626f6f 742f7368  ub.com/rhboot/sh
+ d4080 696d0a73 68696d2e 31307a69 672c312c  im.shim.10zig,1,
+ d4090 31305a69 47205465 63686e6f 6c6f6779  10ZiG Technology
+ d40a0 2c736869 6d2c3135 2e382c6d 61696c3a  ,shim,15.8,mail:
+ d40b0 73656375 7265626f 6f744031 307a6967  secureboot@10zig
+ d40c0 2e636f6d 0a                          .com.           
+
+shimx64.efi:     file format pei-x86-64
+
+Contents of section .sbatlevel:
+ 86000 00000000 08000000 37000000 73626174  ........7...sbat
+ 86010 2c312c32 30323330 31323930 300a7368  ,1,2023012900.sh
+ 86020 696d2c32 0a677275 622c330a 67727562  im,2.grub,3.grub
+ 86030 2e646562 69616e2c 340a0073 6261742c  .debian,4..sbat,
+ 86040 312c3230 32343031 30393030 0a736869  1,2024010900.shi
+ 86050 6d2c340a 67727562 2c330a67 7275622e  m,4.grub,3.grub.
+ 86060 64656269 616e2c34 0a00               debian,4..      
 
 
 GRUB2:
@@ -269,37 +298,43 @@ objdump -j .sbat -s grubx64.efi |head -n 20
 grubx64.efi:     file format pei-x86-64
 
 Contents of section .sbat:
- 3ff000 73626174 2c312c53 42415420 56657273  sbat,1,SBAT Vers
- 3ff010 696f6e2c 73626174 2c312c68 74747073  ion,sbat,1,https
- 3ff020 3a2f2f67 69746875 622e636f 6d2f7268  ://github.com/rh
- 3ff030 626f6f74 2f736869 6d2f626c 6f622f6d  boot/shim/blob/m
- 3ff040 61696e2f 53424154 2e6d640a 67727562  ain/SBAT.md.grub
- 3ff050 2c342c46 72656520 536f6674 77617265  ,4,Free Software
- 3ff060 20466f75 6e646174 696f6e2c 67727562   Foundation,grub
- 3ff070 2c322e30 362c6874 7470733a 2f2f7777  ,2.06,https://ww
- 3ff080 772e676e 752e6f72 672f736f 66747761  w.gnu.org/softwa
- 3ff090 72652f67 7275622f 0a677275 622e6465  re/grub/.grub.de
- 3ff0a0 6269616e 2c342c44 65626961 6e2c6772  bian,4,Debian,gr
- 3ff0b0 7562322c 322e3036 2d31332b 64656231  ub2,2.06-13+deb1
- 3ff0c0 3275312c 68747470 733a2f2f 74726163  2u1,https://trac
- 3ff0d0 6b65722e 64656269 616e2e6f 72672f70  ker.debian.org/p
- 3ff0e0 6b672f67 72756232 0a000000 00000000  kg/grub2........
+ 28a000 73626174 2c312c53 42415420 56657273  sbat,1,SBAT Vers
+ 28a010 696f6e2c 73626174 2c312c68 74747073  ion,sbat,1,https
+ 28a020 3a2f2f67 69746875 622e636f 6d2f7268  ://github.com/rh
+ 28a030 626f6f74 2f736869 6d2f626c 6f622f6d  boot/shim/blob/m
+ 28a040 61696e2f 53424154 2e6d640a 67727562  ain/SBAT.md.grub
+ 28a050 2c342c46 72656520 536f6674 77617265  ,4,Free Software
+ 28a060 20466f75 6e646174 696f6e2c 67727562   Foundation,grub
+ 28a070 2c322e31 322c6874 7470733a 2f2f7777  ,2.12,https://ww
+ 28a080 772e676e 752e6f72 672f736f 66747761  w.gnu.org/softwa
+ 28a090 72652f67 7275622f 0a677275 622e6465  re/grub/.grub.de
+ 28a0a0 6269616e 2c342c44 65626961 6e2c6772  bian,4,Debian,gr
+ 28a0b0 7562322c 322e3132 2d312c68 74747073  ub2,2.12-1,https
+ 28a0c0 3a2f2f74 7261636b 65722e64 65626961  ://tracker.debia
+ 28a0d0 6e2e6f72 672f706b 672f6772 7562320a  n.org/pkg/grub2.
+ 28a0e0 67727562 2e646562 69616e31 332c312c  grub.debian13,1,
+ 28a0f0 44656269 616e2c67 72756232 2c322e31  Debian,grub2,2.1
+
 
 *******************************************************************************
-### Which modules are built into your signed GRUB2 image?
+### If shim is loading GRUB2 bootloader, which modules are built into your signed GRUB2 image?
 *******************************************************************************
 We took the binaries from debian bookworm, no external modules.
 
 *******************************************************************************
-### What is the origin and full version number of your bootloader (GRUB2 or other)?
+### If you are using systemd-boot on arm64 or riscv, is the fix for [unverified Devicetree Blob loading](https://github.com/systemd/systemd/security/advisories/GHSA-6m6p-rjcq-334c) included?
 *******************************************************************************
-GRUB 2.06-13+deb12u1 from Debian Bookworm
+We don't use systemd-boot
+*******************************************************************************
+### What is the origin and full version number of your bootloader (GRUB2 or systemd-boot or other)?
+*******************************************************************************
+GRUB 2.12-1 from Debian Trixie
 *******************************************************************************
 ### If your SHIM launches any other components, please provide further details on what is launched.
 *******************************************************************************
 Shim launches only GRUB, no other components.
 *******************************************************************************
-### If your GRUB2 launches any other binaries that are not the Linux kernel in SecureBoot mode, please provide further details on what is launched and how it enforces Secureboot lockdown.
+### If your GRUB2 or systemd-boot launches any other binaries that are not the Linux kernel in SecureBoot mode, please provide further details on what is launched and how it enforces Secureboot lockdown.
 *******************************************************************************
 GRUB will launch only linux kernel, no other components.
 
@@ -322,4 +357,4 @@ linux 6.3.7 with lockdown forced.
 *******************************************************************************
 ### Add any additional information you think we may need to validate this shim.
 *******************************************************************************
-[your text here]
+Previous version, based on shim 15.7, was approved here https://github.com/rhboot/shim-review/issues/326

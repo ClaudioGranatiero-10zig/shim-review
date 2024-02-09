@@ -11,14 +11,14 @@ RUN apt-get install -y ca-certificates openssl coreutils bash tar xz-utils sed d
 # 
 # clone shim
 WORKDIR /build
-RUN mkdir -p /build/patches
-COPY patches /build/patches
+#RUN mkdir -p /build/patches
+#COPY patches /build/patches
 
-RUN wget --no-check-certificate https://github.com/rhboot/shim/releases/download/15.7/shim-15.7.tar.bz2
-RUN tar jxf shim-15.7.tar.bz2
-WORKDIR /build/shim-15.7
+RUN wget --no-check-certificate https://github.com/rhboot/shim/releases/download/15.8/shim-15.8.tar.bz2
+RUN tar jxf shim-15.8.tar.bz2
+WORKDIR /build/shim-15.8
 
-RUN git apply /build/patches/*.patch
+#RUN git apply /build/patches/*.patch
 
 # include certificate and custom sbat
 ADD ${CERT_FILE} .
