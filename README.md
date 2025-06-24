@@ -175,7 +175,7 @@ Hint: If you attach all the patches and modifications that are being used to you
 
 You can also point to your custom git servers, where the code is hosted.
 *******************************************************************************
-https://github.com/ClaudioGranatiero-10zig/shim-review/blob/main/shim-16.0.tar.bz2
+https://github.com/ClaudioGranatiero-10zig/shim-review/blob/10zig-shim-x64-20250624/shim-16.0.tar.bz2
 
 *******************************************************************************
 ### What patches are being applied and why:
