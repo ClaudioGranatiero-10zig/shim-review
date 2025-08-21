@@ -14,9 +14,9 @@ WORKDIR /build
 #RUN mkdir -p /build/patches
 #COPY patches /build/patches
 
-RUN wget --no-check-certificate https://github.com/rhboot/shim/releases/download/16.0/shim-16.0.tar.bz2
-RUN tar jxf shim-16.0.tar.bz2
-WORKDIR /build/shim-16.0
+RUN wget --no-check-certificate https://github.com/rhboot/shim/releases/download/16.1/shim-16.1.tar.bz2
+RUN tar jxf shim-16.1.tar.bz2
+WORKDIR /build/shim-16.1
 
 #RUN git apply /build/patches/*.patch
 
