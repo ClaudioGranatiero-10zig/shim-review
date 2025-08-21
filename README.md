@@ -407,7 +407,7 @@ None other than updating to shim 16.0.
 *******************************************************************************
 ### What is the SHA256 hash of your final shim binary?
 *******************************************************************************
-6c9a771fed2df585e41e37ecaa3430a77d234156d77c6b741ec7b1ea16f78d7d
+3225846b067ba9ece10136ba121bb215c67206245799e4bb17a3f3da1c4c506d
 
 *******************************************************************************
 ### How do you manage and protect the keys used in your shim?
