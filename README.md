@@ -353,7 +353,7 @@ Our full linux kernel repo is here: https://github.com/10ZiG-Technology/linux
 *******************************************************************************
 [unchanged]
 
-We have set CONFIG_MODULE_SIG_FORCE, CONFIG_MODULE_SIG_ALL and CONFIG_MODVERSIONS; CONFIG_MODULE_SIG_KEY is not set, and certs/signing_key.pem is removed at every build, so every time the keys are regenerated and all the modules can only be safely loaded by that kernel.
+We have set CONFIG_MODULE_SIG_FORCE, CONFIG_MODULE_SIG_ALL and CONFIG_MODVERSIONS; CONFIG_MODULE_SIG_KEY is set to permit signing some 3rd party modules (not included in RPOS inintrd), and certs/signing_key.pem is removed at every build, so every time the keys are regenerated and all the modules can only be safely loaded by that kernel.
 
 *******************************************************************************
 ### If you use vendor_db functionality of providing multiple certificates and/or hashes please briefly describe your certificate setup.
