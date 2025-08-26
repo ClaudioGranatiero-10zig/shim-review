@@ -303,7 +303,8 @@ If you had no previous signed shim, say so here. Otherwise a simple _yes_ will d
 *******************************************************************************
 [updated]
 
-Previous SHIM 15.8 submission was accepted by review team and signed by Microsoft. We decided to update submission to SHIM version 16.0. The GRUB2 binary loaded by new shim is unchanged.
+Previous SHIM 15.8 submission was accepted by review team and signed by Microsoft. 
+Yes, the old GRUB is revoked by SBAT revocations provided with the new Shim build
 
 *******************************************************************************
 ### If your boot chain of trust includes a Linux kernel:
@@ -402,7 +403,7 @@ Skip this, if this is your first application for having shim signed.
 *******************************************************************************
 [new]
 
-None other than updating to shim 16.0.
+None other than updating to shim 16.1.
 
 *******************************************************************************
 ### What is the SHA256 hash of your final shim binary?
@@ -544,9 +545,12 @@ Skip this, if you're not using GRUB2.
 
 Hint: this is about those modules that are in the binary itself, not the `.mod` files in your filesystem.
 *******************************************************************************
-[Unchanged]
+[updated]
 
 We took the binary from debian 13, no external modules.
+The builtin modules (from debian 13 sources package) are: 
+all_video boot btrfs cat chain configfile echo efifwsetup efinet ext2 fat font f2fs gettext gfxmenu gfxterm gfxterm_background gzio halt help hfsplus iso9660 jfs jpeg keystatus loadenv loopback linux ls lsefi lsefimmap lsefisystab lssal memdisk minicmd normal ntfs part_apple part_msdos part_gpt password_pbkdf2 peimage png probe reboot regexp search search_fs_uuid search_fs_file search_label serial sleep smbios squash4 test tpm true video xfs zfs zfscrypt zfsinfo
+I've included in the repository the file debian/build-efi-images directly from the sources.
 
 *******************************************************************************
 ### If you are using systemd-boot on arm64 or riscv, is the fix for [unverified Devicetree Blob loading](https://github.com/systemd/systemd/security/advisories/GHSA-6m6p-rjcq-334c) included?
